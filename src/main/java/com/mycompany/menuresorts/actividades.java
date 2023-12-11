@@ -6,14 +6,14 @@ package com.mycompany.menuresorts;
  * @author avbre
  */
 public class actividades {
-    private int id;
-    private char descript;
-    private int precio;
+    private static int id;
+    private static char descript;
+    private static int precio;
     
         public actividades(int id, char descript, int precio){
-            this.id=id;
-            this.descript=descript;
-            this.precio=precio;
+            actividades.id=id;
+            actividades.descript=descript;
+            actividades.precio=precio;
         }
         
 }

@@ -8,12 +8,12 @@ package com.mycompany.menuresorts;
 import java.util.Date;
 
 public class factura {
-    private int[] id=new int[8];
-    private int coste;
-    private date fechafact;
+    private static final int[] id=new int[8];
+    private static int coste;
+    private static Date fechafact;
     
         public factura(){
-            this.fechafact=new Date();
+            factura.fechafact=new Date();
         }
     
     

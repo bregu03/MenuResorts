@@ -6,15 +6,15 @@ package com.mycompany.menuresorts;
  * @author avbre
  */
 public class clientes {
-    private char nombre;
-    private char apellidos;
-    private int numeroT;
-    private String id;
+    private static char nombre;
+    private static char apellidos;
+    private static int numeroT;
+    private static String id;
     
         public clientes(char nombre, char apellidos, int numeroT, String id){
-            this.nombre=nombre;
-            this.apellidos=apellidos;
-            this.numeroT=numeroT;
-            this.id=id;
+            clientes.nombre=nombre;
+            clientes.apellidos=apellidos;
+            clientes.numeroT=numeroT;
+            clientes.id=id;
         }
 }
