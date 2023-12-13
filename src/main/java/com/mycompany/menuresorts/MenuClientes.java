@@ -9,7 +9,6 @@ import java.util.Scanner;
  * @author avbre
  */
 public class MenuClientes {
-    static resort resort=new resort();
      public static void menu_clientes() {
         Scanner sc = new Scanner(System.in);
         int opcion;
