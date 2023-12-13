@@ -29,7 +29,7 @@ public class MenuActividades {
                       System.out.println("No has introducido un numéro.");
                       opcion= -1;
             } 
-            if((opcion<0 || opcion >6){
+            if(opcion<0 || opcion >6) {
                 System.out.println("La opcion no es valda.");
             } else if (opcion == 0){
                 System.out.println("Saliendo del progrma...");
