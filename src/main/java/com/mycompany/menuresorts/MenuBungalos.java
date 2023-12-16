@@ -65,5 +65,17 @@ public class MenuBungalos {
           
         }while (opcion!=0);
     }
+    public static void crearBungalo(){
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.println("Introduce la capacidad del bungalo: "); //solicitar datos bungalo
+        int capacidad=sc.nextInt();
+        
+        System.out.println("Introduce el nombre del bungalo: ");
+        char nombre=sc.next().charAt(0);
+        
+        System.out.println("Introduce el precio del bungalo: ");
+        int precio=sc.nextInt();
+    }
 }
 
