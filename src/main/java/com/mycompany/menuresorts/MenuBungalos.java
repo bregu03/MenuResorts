@@ -67,8 +67,8 @@ public class MenuBungalos {
     }
     public static void crearBungalo(){
         Scanner sc = new Scanner(System.in);
-        
-        System.out.println("Introduce la capacidad del bungalo: "); //solicitar datos bungalo
+        //solicitar datos bungalo
+        System.out.println("Introduce la capacidad del bungalo: "); 
         int capacidad=sc.nextInt();
         
         System.out.println("Introduce el nombre del bungalo: ");
@@ -76,6 +76,18 @@ public class MenuBungalos {
         
         System.out.println("Introduce el precio del bungalo: ");
         int precio=sc.nextInt();
+        
+        System.out.println("¿Está el bungalo adaptado para personas con discapacidad? (S/N): ");
+        boolean adaptado=sc.next().charAt(0)=='S';
+        
+        //crear nuevo bungalo
+        bungalo nuevoBungalo=new bungalo(capacidad, nombre, precio, adaptado);
+        
+        //añadimos el bungalo al registro
+        resort.bungalos.add(nuevoBungalo);
+        
+        //mensaje confirmacion
+        System.out.println("Bungalo creado correctamente.");
     }
 }
 
