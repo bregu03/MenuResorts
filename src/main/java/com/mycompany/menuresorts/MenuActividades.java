@@ -41,11 +41,11 @@ public class MenuActividades {
                     break;
                     
                     case 2:
-                        
+                        listarActividades();
                     break;
                     
                     case 3:
-                        
+                        mostrarActividad();
                     break;
      
                     case 0:
@@ -87,65 +87,85 @@ public class MenuActividades {
         
         // Solicitamos la descripción de la actividad
         System.out.print("Introduzca una descripción de la actividad: ");
-        int capacidad = MyInput.readInt();
+        String descripcion = MyInput.readString();
 
-        // Solicitamos el nombre del bungalo
-        System.out.print("Ingrese el nombre del bungalo: ");
-        String nombre = MyInput.readString();
-
-        // Solicitamos el precio del bungalo
-        System.out.print("Ingrese el precio del bungalo: ");
+        // Solicitamos el precio de la actividad por persona y dia
+        System.out.print("Ingrese el precio de la actividad por persona y dia: ");
         int precio = MyInput.readInt();
-
-        // Solicitamos si el bungalow es accesible para personas con discapacidad
-        System.out.print("¿El bungalow es accesible para personas con discapacidad? (S/N): ");
-        String respuesta1 = MyInput.readString();
-        boolean adaptado, siguiente1;
-        adaptado = true;
-        do {
-            if ((respuesta1.equals("S")) || (respuesta1.equals("s"))){
-                // Si la respuesta es afirmativa, cambiamos la variable adaptado a true
-                adaptado = true;
-                siguiente1 = true;
-            } else if ((respuesta1.equals("N")) || (respuesta1.equals("n"))){
-                // Si la respuesta es negativa, cambiamos la variable adaptado a false
-                adaptado = false;
-                siguiente1 = true;
-            } else{
-                // Si no se reconoce la respuesta, repetimos la pregunta
-                siguiente1 = false;
-                System.out.println("Respuesta no valida, introduzca un valor valido");
-                System.out.print("¿El bungalow es accesible para personas con discapacidad? (S/N): ");
-                respuesta1 = MyInput.readString();
-            }
-        } while (!siguiente1);
 
         // Solicitamos confirmación para guardar los datos
         System.out.print("¿Son correctos estos datos? (S/N): ");
-        String respuesta2 = MyInput.readString();
-        boolean siguiente2;
+        String respuesta = MyInput.readString();
+        boolean siguiente;
         do {
-            if ((respuesta2.equals("S")) || (respuesta2.equals("s"))){
+            if ((respuesta.equals("S")) || (respuesta.equals("s"))){
                 // Si la respuesta es afirmativa, guardamos los datos
-                bungalo bungalo = new bungalo(capacidad, nombre, precio, adaptado, id);
+                actividad actividad = new actividad(id, descripcion, precio);
                 // Añadimos el bungalo a la lista de bungalos del resort
-                resort.bungalos.add(bungalo);
+                resort.actividades.add(actividad);
                 // Mostramos un mensaje de confirmación
                 System.out.println("Los datos se han guardado correctamente.");
                 System.out.println("Volviendo al menu...");
-                siguiente2 = true;
-            } else if ((respuesta2.equals("N")) || (respuesta2.equals("n"))){
+                siguiente = true;
+            } else if ((respuesta.equals("N")) || (respuesta.equals("n"))){
                 // Si la respuesta es negativa, mostramos un mensage y volvemos al menu
                 System.out.println("Los datos no han sido guardados.");
                 System.out.println("Volviendo al menu...");
-                siguiente2 = true;
+                siguiente = true;
             } else{
                 // Si no se reconoce la respuesta, repetimos la pregunta
                 System.out.println("Respuesta no valida, introduzca un valor valido");
                 System.out.print("¿Son correctos estos datos? (S/N): ");
-                respuesta2 = MyInput.readString();
-                siguiente2 = false;
+                respuesta = MyInput.readString();
+                siguiente = false;
             }
-        } while (!siguiente2);
+        } while (!siguiente);
+    }
+    
+    public static void listarActividades(){
+        if (resort.actividades.isEmpty()){
+            System.out.println("No hay ninguna actividad almacenada en el sistema");
+        } else if (!resort.actividades.isEmpty()){
+            System.out.println("");
+            System.out.println("ACTIVIDADES");
+            for (int i = 0; i < resort.actividades.size(); i++) {
+                System.out.println("");
+                System.out.println("ID: " + resort.actividades.get(i).id);
+                System.out.println("Descripción: " + resort.actividades.get(i).descripcion);
+            }
+        }
+    }
+    
+    public static void mostrarActividad(){
+        if (resort.actividades.isEmpty()){
+            System.out.println("No hay ningun bungalo almacenado en el sistema");
+        } else if (!resort.actividades.isEmpty()){
+            System.out.println("");
+            System.out.print("Ingrese la id de la actividad que desea buscar: ");
+            int idActividad = MyInput.readInt();
+
+            // Comprobamos si la actividad existe
+            boolean existeActividad = false;
+            int actividadMostrar = 0;
+            for (int i = 0; i < resort.actividades.size(); i++) {
+                if (resort.actividades.get(i).id == idActividad) {
+                    existeActividad = true;
+                    actividadMostrar = i;
+                    break;
+                }
+            }
+        
+            // Si la actividad existe, mostramos un mensaje de error
+            if (!existeActividad) {
+              System.out.println("La actividad con id " + idActividad + " no existe.");
+              System.out.println("Volviendo al menu...");
+            } else if (existeActividad){
+                // Mostramos la informacion de la actividad
+                System.out.println("");
+                System.out.println("ID: " + resort.actividades.get(actividadMostrar).id);
+                System.out.println("Descripción: " + resort.actividades.get(actividadMostrar).descripcion);
+                System.out.println("Precio: " + resort.actividades.get(actividadMostrar).precio);
+            }
+        }
     }
 }
