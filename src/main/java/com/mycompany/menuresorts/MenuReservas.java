@@ -181,7 +181,7 @@ public class MenuReservas {
                 }
             }while (!disponibleId);
             
-            boolean servicios;
+            boolean servicios = false;
             if (adaptado){
                 System.out.print("¿Desea solicitar servicios especiales? (S/N): ");
                 String respuesta = MyInput.readString();
@@ -207,6 +207,85 @@ public class MenuReservas {
                 servicios = false;
             }
             
+            // Solicitamos el DNI/NIF del cliente
+            System.out.print("Ingrese el DNI/NIF del cliente: ");
+            String numeroFiscal = MyInput.readString();
+            boolean existeCliente = false;
+            String nombre = null;
+            String apellidos = null;
+            int telefono = 0;
+            if (!resort.reservas.isEmpty()){
+                // Bucle para comprobar si el DNI/NIF ya existe
+                int numeroCliente = 0;
+                // Comprobamos si el DNI/NIF ya existe
+                existeCliente = false;
+
+                for (int i = 0; i < resort.clientes.size(); i++) {
+                    if (resort.clientes.get(i).numeroFiscal == numeroFiscal) {
+                        existeCliente = true;
+                        numeroCliente = i;
+                        break;
+                    }
+                }
+
+                // Si el DNI/NIF ya existe, rellenamos el resto de datos
+                if (existeCliente) {
+                    nombre = resort.clientes.get(numeroCliente).nombre;
+                    apellidos = resort.clientes.get(numeroCliente).apellidos;
+                    telefono = resort.clientes.get(numeroCliente).telefono;
+                } else if (!existeCliente){
+                    // Solicitamos el nombre del cliente
+                    System.out.print("Ingrese el nombre del cliente: ");
+                    nombre = MyInput.readString();
+
+                    // Solicitamos los apellidos del cliente
+                    System.out.print("Ingrese los apellidos del cliente: ");
+                    apellidos = MyInput.readString();
+                    
+                    // Solicitamos el telefono del cliente
+                    System.out.print("Ingrese el telefono del cliente: ");
+                    telefono = MyInput.readInt();
+                }
+            } else if (resort.reservas.isEmpty()){
+                // Solicitamos el nombre del cliente
+                existeCliente = false;
+                System.out.print("Ingrese el nombre del cliente: ");
+                nombre = MyInput.readString();
+
+                // Solicitamos los apellidos del cliente
+                System.out.print("Ingrese los apellidos del cliente: ");
+                apellidos = MyInput.readString();
+
+                // Solicitamos el telefono del cliente
+                System.out.print("Ingrese el telefono del cliente: ");
+                telefono = MyInput.readInt();
+            }
+            
+            // Solicitamos la id de la reserva
+            System.out.print("Ingrese la id de la reserva: ");
+            int id = MyInput.readInt();
+            if (!resort.reservas.isEmpty()){
+                // Bucle para comprobar si la id ya existe
+                boolean existeId;
+                do {
+                    // Comprobamos si la id ya existe
+                    existeId = false;
+
+                    for (int i = 0; i < resort.bungalos.size(); i++) {
+                        if (resort.reservas.get(i).id == id) {
+                            existeId = true;
+                            break;
+                        }
+                    }
+
+                    // Si la id ya existe, pedimos una nueva
+                    if (existeId) {
+                        System.out.print("La id que ha introducido ya existe. Por favor, introduzca otra id: ");
+                        id = MyInput.readInt();
+                    }
+                }while (existeId);
+            }
+            
             // Solicitamos confirmación para guardar los datos
             System.out.print("¿Son correctos estos datos? (S/N): ");
             String respuesta2 = MyInput.readString();
@@ -214,7 +293,11 @@ public class MenuReservas {
             do {
                 if ((respuesta2.equals("S")) || (respuesta2.equals("s"))){
                     // Si la respuesta es afirmativa, guardamos los datos
-                    reserva reserva = new reserva(idBungalo, id, cliente, fechaInicio, fechaFin, servicios);
+                    reserva reserva = new reserva(idBungalo, id, nombre, apellidos, numeroFiscal, telefono, fechaInicio, fechaFin, servicios);
+                    if (!existeCliente){
+                        cliente cliente = new cliente(nombre, apellidos, numeroFiscal, telefono);
+                        resort.clientes.add(cliente);
+                    }
                     // Añadimos la reserva a la lista de reservas del resort
                     resort.reservas.add(reserva);
                     // Mostramos un mensaje de confirmación
