@@ -101,7 +101,7 @@ public class MenuActividades {
             if ((respuesta.equals("S")) || (respuesta.equals("s"))){
                 // Si la respuesta es afirmativa, guardamos los datos
                 actividad actividad = new actividad(id, descripcion, precio);
-                // Añadimos el bungalo a la lista de bungalos del resort
+                // Añadimos la actividad a la lista de actividades del resort
                 resort.actividades.add(actividad);
                 // Mostramos un mensaje de confirmación
                 System.out.println("Los datos se han guardado correctamente.");
@@ -138,7 +138,7 @@ public class MenuActividades {
     
     public static void mostrarActividad(){
         if (resort.actividades.isEmpty()){
-            System.out.println("No hay ningun bungalo almacenado en el sistema");
+            System.out.println("No hay ninguna actividad almacenada en el sistema");
         } else if (!resort.actividades.isEmpty()){
             System.out.println("");
             System.out.print("Ingrese la id de la actividad que desea buscar: ");

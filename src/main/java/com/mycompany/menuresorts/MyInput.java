@@ -6,6 +6,9 @@ package com.mycompany.menuresorts;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Clase con utilidades para la entrada de datos desde teclado y fichero 
@@ -65,7 +68,16 @@ public static short readShort() {
      */
 public static long readLong() {
 	return Long.parseLong(readString()); }
+// Lee un dato tipo date desde el teclado
 
+    /**
+     * Método que permite leer una fecha por teclado
+     * @return retorna una fecha.
+     * @throws java.text.ParseException
+     */
+public static Date readDate() throws ParseException {
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+	return formatoFecha.parse(readString()); }
 //Lee un dato tipo float desde el teclado
 
     /**
