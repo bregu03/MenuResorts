@@ -171,11 +171,11 @@ public class MenuBungalos {
 
             // Comprobamos si el bungalo existe
             boolean existeBungalo = false;
-            int bungaloeliminar = 0;
+            int bungaloEliminar = 0;
             for (int i = 0; i < resort.bungalos.size(); i++) {
                 if (resort.bungalos.get(i).id == idBungalo) {
                     existeBungalo = true;
-                    bungaloeliminar = i;
+                    bungaloEliminar = i;
                     break;
                 }
             }
@@ -187,11 +187,8 @@ public class MenuBungalos {
             } else if (existeBungalo){
                 // Comprobamos si el bungalo está reservado
                 boolean estaReservado = false;
-                for (int i = 0; i < resort.reservas.size(); i++) {
-                    if (resort.reservas.get(i).idBungalo == idBungalo) {
-                        estaReservado = true;
-                        break;
-                    }
+                if (resort.reservas.get(bungaloEliminar).idBungalo == idBungalo) {
+                    estaReservado = true;
                 }
 
                 // Si el bungalo está reservado, mostramos un mensaje de error
@@ -201,18 +198,18 @@ public class MenuBungalos {
                 } else if (!estaReservado) {
                     // Imprime los datos del bungalo
                     System.out.println("");
-                    System.out.println("Capacidad: " + resort.bungalos.get(bungaloeliminar).capacidad);
-                    System.out.println("Nombre: " + resort.bungalos.get(bungaloeliminar).nombre);
-                    System.out.println("Precio: " + resort.bungalos.get(bungaloeliminar).precio);
-                    System.out.println("Adaptado: " + resort.bungalos.get(bungaloeliminar).adaptado);
-                    System.out.println("ID: " + resort.bungalos.get(bungaloeliminar).id);
+                    System.out.println("Capacidad: " + resort.bungalos.get(bungaloEliminar).capacidad);
+                    System.out.println("Nombre: " + resort.bungalos.get(bungaloEliminar).nombre);
+                    System.out.println("Precio: " + resort.bungalos.get(bungaloEliminar).precio);
+                    System.out.println("Adaptado: " + resort.bungalos.get(bungaloEliminar).adaptado);
+                    System.out.println("ID: " + resort.bungalos.get(bungaloEliminar).id);
                     System.out.print("¿Desea eliminar este bungalo? (S/N): ");
                     String respuesta = MyInput.readString();
                     boolean siguiente;
                     do {
                         if ((respuesta.equals("S")) || (respuesta.equals("s"))){
                             // Si la respuesta es afirmativa, eliminamos el bungalo del array
-                            resort.bungalos.remove(bungaloeliminar);
+                            resort.bungalos.remove(bungaloEliminar);
                             System.out.println("El bungalo con id " + idBungalo + " ha sido eliminado correctamente.");
                             System.out.println("Volviendo al menu...");
                             siguiente = true;

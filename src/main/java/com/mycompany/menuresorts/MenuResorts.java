@@ -1,5 +1,7 @@
 package com.mycompany.menuresorts;
 
+import java.text.ParseException;
+
 /**
  *
  * @author avbre
@@ -8,7 +10,7 @@ public class MenuResorts {
     
     static resort resort = new resort();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         
         resort = MyInput.deserialize("resort.dat");
 

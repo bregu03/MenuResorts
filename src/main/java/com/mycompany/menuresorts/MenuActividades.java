@@ -86,7 +86,7 @@ public class MenuActividades {
         }
         
         // Solicitamos la descripción de la actividad
-        System.out.print("Introduzca una descripción de la actividad: ");
+        System.out.print("Introduzca una descripción de la actividad (en caso de ser del restaurante, escriba 'restaurante'): ");
         String descripcion = MyInput.readString();
 
         // Solicitamos el precio de la actividad por persona y dia

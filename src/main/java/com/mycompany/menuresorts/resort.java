@@ -14,7 +14,6 @@ import java.util.ArrayList;
 public class resort implements Serializable {
     static ArrayList<bungalo> bungalos;
     static ArrayList<actividad> actividades;
-    static ArrayList<actividadReservada> actividadesReservadas;
     static ArrayList<reserva> reservas;
     static ArrayList<cliente> clientes;
     static ArrayList<factura> factura;
@@ -22,7 +21,6 @@ public class resort implements Serializable {
     public resort() {
         bungalos = new ArrayList<>();
         actividades = new ArrayList<>();
-        actividadesReservadas = new ArrayList<>();
         reservas = new ArrayList<>();
         clientes = new ArrayList<>();
         factura = new ArrayList<>();
