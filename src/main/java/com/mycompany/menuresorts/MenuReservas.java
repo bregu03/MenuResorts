@@ -1,20 +1,16 @@
 
 package com.mycompany.menuresorts;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
-
 /**
  *
  * @author avbre
  */
 public class MenuReservas {
      public static void menu_reservas() {
-        Scanner sc = new Scanner(System.in);
         int opcion;
         do{
             System.out.println("");
-            System.out.println("MENÚ PRINCIPAL");
+            System.out.println("MENÚ RESERVAS");
             System.out.println("1. Dar de alta");
             System.out.println("2. Dar de baja");
             System.out.println("3. Añadir actividad");
@@ -22,17 +18,25 @@ public class MenuReservas {
             System.out.println("5. Listar reservas");
             System.out.println("6. Mostrar reservas");
             System.out.println("0. Volver atrás");
-            System.out.print("Introduce una opcion: ");
+            
+            // Leemos la opción del usuario
+            System.out.print("Introduce una opción: ");
+            String s=MyInput.readString();
             try{  
-                   opcion= sc.nextInt(); //el try intenta pasarlo a int
-            }catch(InputMismatchException e){  //si no se consigue pasar a int
-                      System.out.println("No has introducido un numero.");
-                      opcion=-1;
-            } 
-            if(opcion<0 || opcion>6){
-                System.out.println("La opcion no es valda.");
+               opcion= Integer.parseInt(s);
+            }catch(NumberFormatException ex){
+                System.out.println("La entrada no tiene formato de número. Inténtelo de nuevo");
+                opcion = -999;
+            }
+
+            // Comprobamos la opción
+            if (opcion < 0 || opcion > 6) {
+                if (opcion != -999){
+                    // Si la opción no es válida, lo avisamos
+                    System.out.println("La opción no es válida.");
+                }
             } else if (opcion == 0){
-                System.out.println("Saliendo del progrma...");
+                System.out.println("Regresando al menu principal");
             }else{ 
                 switch(opcion){
                     case 1:

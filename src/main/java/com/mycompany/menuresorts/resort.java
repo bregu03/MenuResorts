@@ -13,14 +13,14 @@ import java.util.ArrayList;
  */
 public class resort implements Serializable {
     static ArrayList<bungalo> bungalos;
-    static ArrayList<actividades> actividades;
-    static ArrayList<actividadesReservadas> actividadesReservadas;
-    static ArrayList<reservas> reservas;
-    static ArrayList<clientes> clientes;
+    static ArrayList<actividad> actividades;
+    static ArrayList<actividadReservada> actividadesReservadas;
+    static ArrayList<reserva> reservas;
+    static ArrayList<cliente> clientes;
     static ArrayList<factura> factura;
-    static ArrayList<servicios> servicios;
+    static ArrayList<servicio> servicios;
 
-    public void Resort() {
+    public resort() {
         bungalos = new ArrayList<>();
         actividades = new ArrayList<>();
         actividadesReservadas = new ArrayList<>();

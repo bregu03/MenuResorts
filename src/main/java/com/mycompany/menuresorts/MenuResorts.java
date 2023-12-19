@@ -1,8 +1,5 @@
 package com.mycompany.menuresorts;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
-
 /**
  *
  * @author avbre
@@ -13,9 +10,7 @@ public class MenuResorts {
 
     public static void main(String[] args) {
         
-        resort loadedResort = MyInput.deserialize("resort.dat");
-        
-        Scanner sc = new Scanner(System.in);
+        resort = MyInput.deserialize("resort.dat");
 
         int opcion;
 
@@ -33,18 +28,20 @@ public class MenuResorts {
 
             // Leemos la opción del usuario
             System.out.print("Introduce una opción: ");
-            try {
-                opcion = sc.nextInt();
-            } catch (InputMismatchException e) {
-                // Si el usuario no introduce un número, lo avisamos
-                System.out.println("No has introducido un número.");
-                opcion = -1;
+            String s=MyInput.readString();
+            try{  
+               opcion= Integer.parseInt(s);
+            }catch(NumberFormatException ex){
+                System.out.println("La entrada no tiene formato de número. Inténtelo de nuevo");
+                opcion = -999;
             }
 
             // Comprobamos la opción
             if (opcion < 0 || opcion > 6) {
-                // Si la opción no es válida, lo avisamos
-                System.out.println("La opción no es válida.");
+                if (opcion != -999){
+                    // Si la opción no es válida, lo avisamos
+                    System.out.println("La opción no es válida.");
+                }
             } else if (opcion == 0) {
                 // Si el usuario selecciona la opción 0, salimos del programa
                 System.out.println("Saliendo del programa...");
@@ -53,25 +50,30 @@ public class MenuResorts {
                 switch (opcion) {
                     case 1:
                         // Gestión de bungalós
+                        MenuBungalos.menu_bungalos();
                         break;
                     case 2:
                         // Gestión de clientes
+                        MenuClientes.menu_clientes();
                         break;
                     case 3:
                         // Gestión de las actividades
+                        MenuActividades.menu_actividades();
                         break;
                     case 4:
                         // Gestión de reservas
+                        MenuReservas.menu_reservas();
                         break;
                     case 5:
                         // Gestión de facturación
+                        MenuFacturacion.menu_facturacion();
                         break;
                     case 6:
                         // Salvar datos
+                        MyInput.serialize(resort, "resort.dat");
                         break;
                 }
             }
         } while (opcion != 0);
-        MyInput.serialize(resort, "resort.dat");
     }
 }

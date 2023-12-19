@@ -10,17 +10,17 @@ import java.util.Date;
  *
  * @author avbre
  */
-public class actividadesReservadas {
+public class actividadReservada {
     private static int id;
     private static int personas;
     private static Date fechainic;
     private static Date fechafin;
     
-        public actividadesReservadas(int id, int personas, Date fechainic, Date fehcafin){
-            actividadesReservadas.id=id;
-            actividadesReservadas.personas=personas;
-            actividadesReservadas.fechainic=fechainic;
-            actividadesReservadas.fechafin=fechafin;
+        public actividadReservada(int id, int personas, Date fechainic, Date fehcafin){
+            actividadReservada.id=id;
+            actividadReservada.personas=personas;
+            actividadReservada.fechainic=fechainic;
+            actividadReservada.fechafin=fechafin;
         }
   
 }

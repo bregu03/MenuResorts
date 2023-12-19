@@ -5,13 +5,13 @@ package com.mycompany.menuresorts;
  * @author avbre
  */
 public class bungalo {
-    private static int capacidad;
-    private static char nombre;
-    private static int precio;
-    private static boolean adaptado;
-    private static int id;
+    public static int capacidad;
+    public static String nombre;
+    public static int precio;
+    public static boolean adaptado;
+    public static int id;
     
-        public bungalo(int capacidad, char nombre, int precio, boolean adaptado, int id){
+        public bungalo(int capacidad, String nombre, int precio, boolean adaptado, int id){
             bungalo.capacidad=capacidad;
             bungalo.nombre=nombre;
             bungalo.precio=precio;
