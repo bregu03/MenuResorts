@@ -8,9 +8,9 @@ package com.mycompany.menuresorts;
 import java.util.Date;
 
 public class factura {
-    private static final int[] id=new int[8];
-    private static int coste;
-    private static Date fechafact;
+    public static int id;
+    public static int coste;
+    public static Date fechafact;
     
         public factura(){
             factura.fechafact=new Date();

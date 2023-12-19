@@ -11,10 +11,10 @@ import java.util.Date;
  * @author avbre
  */
 public class actividadReservada {
-    private static int id;
-    private static int personas;
-    private static Date fechainic;
-    private static Date fechafin;
+    public static int id;
+    public static int personas;
+    public static Date fechainic;
+    public static Date fechafin;
     
         public actividadReservada(int id, int personas, Date fechainic, Date fehcafin){
             actividadReservada.id=id;

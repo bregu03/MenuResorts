@@ -6,7 +6,7 @@ package com.mycompany.menuresorts;
  * @author avbre
  */
 public class MenuFacturacion {
-     public static void menu_facturacion() {
+    public static void menu_facturacion() {
         int opcion;
         do{
             System.out.println("");

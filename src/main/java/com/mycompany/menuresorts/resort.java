@@ -18,7 +18,6 @@ public class resort implements Serializable {
     static ArrayList<reserva> reservas;
     static ArrayList<cliente> clientes;
     static ArrayList<factura> factura;
-    static ArrayList<servicio> servicios;
 
     public resort() {
         bungalos = new ArrayList<>();
@@ -27,6 +26,5 @@ public class resort implements Serializable {
         reservas = new ArrayList<>();
         clientes = new ArrayList<>();
         factura = new ArrayList<>();
-        servicios = new ArrayList<>();
     }
 }
