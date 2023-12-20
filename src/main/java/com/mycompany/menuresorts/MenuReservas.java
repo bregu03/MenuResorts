@@ -59,11 +59,11 @@ public class MenuReservas {
                     break;
                     
                     case 5:
-                        
+                        listarReservas();
                     break;
                     
                     case 6:
-                        
+                        mostrarReserva();
                     break;
                     
                     case 0:
@@ -184,30 +184,50 @@ public class MenuReservas {
                 }
             }while (!disponibleId);
             
-            boolean servicios = false;
+            boolean cama = false;
             if (adaptado){
-                System.out.print("¿Desea solicitar servicios especiales? (S/N): ");
+                System.out.print("¿Desea solicitar cama articulada? (S/N): ");
                 String respuesta = MyInput.readString();
-                boolean siguiente;
+                boolean siguiente = false;
                 do {
                     if ((respuesta.equals("S")) || (respuesta.equals("s"))){
-                        // Si la respuesta es afirmativa, seleccionamos servicios extra
+                        // Si la respuesta es afirmativa, seleccionamos cama articulada
                         siguiente = true;
-                        servicios = true;
+                        cama = true;
                     } else if ((respuesta.equals("N")) || (respuesta.equals("n"))){
-                        // Si la respuesta es negativa, no seleccionamos servicios extra
+                        // Si la respuesta es negativa, no seleccionamos cama articulada
                         siguiente = true;
-                        servicios = false;
+                        cama = false;
                     } else{
                         // Si no se reconoce la respuesta, repetimos la pregunta
                         System.out.println("Respuesta no valida, introduzca un valor valido");
-                        System.out.print("¿Desea solicitar servicios especiales? (S/N): ");
+                        System.out.print("¿Desea solicitar cama articulada? (S/N): ");
                         respuesta = MyInput.readString();
-                        siguiente = false;
                     }
                 } while (!siguiente);
-            } else if (!adaptado){
-                servicios = false;
+            }
+            
+            boolean aseo = false;
+            if (adaptado){
+                System.out.print("¿Desea solicitar aseo asistido? (S/N): ");
+                String respuesta = MyInput.readString();
+                boolean siguiente = false;
+                do {
+                    if ((respuesta.equals("S")) || (respuesta.equals("s"))){
+                        // Si la respuesta es afirmativa, seleccionamos aseo asistido
+                        siguiente = true;
+                        aseo = true;
+                    } else if ((respuesta.equals("N")) || (respuesta.equals("n"))){
+                        // Si la respuesta es negativa, no seleccionamos aseo asistido
+                        siguiente = true;
+                        aseo = false;
+                    } else{
+                        // Si no se reconoce la respuesta, repetimos la pregunta
+                        System.out.println("Respuesta no valida, introduzca un valor valido");
+                        System.out.print("¿Desea solicitar aseo asistido? (S/N): ");
+                        respuesta = MyInput.readString();
+                    }
+                } while (!siguiente);
             }
             
             // Solicitamos el DNI/NIF del cliente
@@ -296,10 +316,16 @@ public class MenuReservas {
             do {
                 if ((respuesta2.equals("S")) || (respuesta2.equals("s"))){
                     // Si la respuesta es afirmativa, guardamos los datos
-                    reserva reserva = new reserva(idBungalo, id, nombre, apellidos, numeroFiscal, telefono, fechaInicio, fechaFin, personas, servicios);
+                    reserva reserva = new reserva(idBungalo, id, nombre, apellidos, numeroFiscal, telefono, fechaInicio, fechaFin, personas);
                     if (!existeCliente){
                         cliente cliente = new cliente(nombre, apellidos, numeroFiscal, telefono);
                         resort.clientes.add(cliente);
+                    }
+                    if (cama){
+                        AdaptadorReservaCama.añadirServicios(reserva.getServicios());
+                    }
+                    if (aseo){
+                        AdaptadorReservaAseo.añadirServicios(reserva.getServicios());
                     }
                     // Añadimos la reserva a la lista de reservas del resort
                     resort.reservas.add(reserva);
@@ -641,6 +667,94 @@ public class MenuReservas {
                         }
                     }
                 }
+            }
+        }
+    }
+    
+    public static void listarReservas(){
+        if (resort.bungalos.isEmpty()){
+            System.out.println("No hay ningun bungalo almacenado en el sistema");
+        } else if (!resort.bungalos.isEmpty()){
+            System.out.println("");
+            System.out.print("Ingrese la id del bungalo que desea buscar: ");
+            int idBungalo = MyInput.readInt();
+
+            // Comprobamos si el bungalo existe
+            boolean existeBungalo = false;
+            int bungaloMostrar = 0;
+            for (int i = 0; i < resort.bungalos.size(); i++) {
+                if (resort.bungalos.get(i).id == idBungalo) {
+                    existeBungalo = true;
+                    bungaloMostrar = i;
+                    break;
+                }
+            }
+        
+            // Si el bungalo no existe, mostramos un mensaje de error
+            if (!existeBungalo) {
+              System.out.println("El bungalo con id " + idBungalo + " no existe.");
+              System.out.println("Volviendo al menu...");
+            } else if (existeBungalo){
+                if (resort.reservas.isEmpty()){
+                    System.out.println("No hay ninguna reserva almacenada en el sistema");
+                } else if (!resort.reservas.isEmpty()){
+                    for (int i = 0; i < resort.reservas.size(); i++) {
+                        if (resort.reservas.get(i).idBungalo == idBungalo) {
+                            System.out.println("RESERVAS DEL BUNGALO "+idBungalo);
+                            System.out.println("");
+                            System.out.println("ID Bungalo: " + resort.reservas.get(i).idBungalo);
+                            System.out.println("ID: " + resort.reservas.get(i).id);
+                            System.out.println("Nombre: " + resort.reservas.get(i).nombre);
+                            System.out.println("Apellidos: " + resort.reservas.get(i).apellidos);
+                            System.out.println("DNI/NIF: " + resort.reservas.get(i).numeroFiscal);
+                            System.out.println("Telefono: " + resort.reservas.get(i).telefono);
+                            System.out.println("Fecha inicio: " + resort.reservas.get(i).fechaInicio);
+                            System.out.println("Fecha fin: " + resort.reservas.get(i).fechaFin);
+                            System.out.println("Número de personas: " + resort.reservas.get(i).personas);
+                            System.out.println("Servicios: " + resort.reservas.get(i).servicios);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    public static void mostrarReserva(){
+        if (resort.reservas.isEmpty()){
+            System.out.println("No hay ninguna reserva almacenada en el sistema");
+        } else if (!resort.reservas.isEmpty()){
+            System.out.println("");
+            System.out.print("Ingrese la id de la reserva que desea buscar: ");
+            int idReserva = MyInput.readInt();
+
+            // Comprobamos si el bungalo existe
+            boolean existeReserva = false;
+            int reservaMostrar = 0;
+            for (int i = 0; i < resort.reservas.size(); i++) {
+                if (resort.reservas.get(i).id == idReserva) {
+                    existeReserva = true;
+                    reservaMostrar = i;
+                    break;
+                }
+            }
+        
+            // Si la reserva no existe, mostramos un mensaje de error
+            if (!existeReserva) {
+              System.out.println("La reserva con id " + idReserva + " no existe.");
+              System.out.println("Volviendo al menu...");
+            } else if (existeReserva){
+                // Mostramos la informacion de la reserva
+                System.out.println("");
+                System.out.println("ID Bungalo: " + resort.reservas.get(reservaMostrar).idBungalo);
+                System.out.println("ID: " + resort.reservas.get(reservaMostrar).id);
+                System.out.println("Nombre: " + resort.reservas.get(reservaMostrar).nombre);
+                System.out.println("Apellidos: " + resort.reservas.get(reservaMostrar).apellidos);
+                System.out.println("DNI/NIF: " + resort.reservas.get(reservaMostrar).numeroFiscal);
+                System.out.println("Telefono: " + resort.reservas.get(reservaMostrar).telefono);
+                System.out.println("Fecha inicio: " + resort.reservas.get(reservaMostrar).fechaInicio);
+                System.out.println("Fecha fin: " + resort.reservas.get(reservaMostrar).fechaFin);
+                System.out.println("Número de personas: " + resort.reservas.get(reservaMostrar).personas);
+                System.out.println("Servicios: " + resort.reservas.get(reservaMostrar).servicios);
             }
         }
     }
