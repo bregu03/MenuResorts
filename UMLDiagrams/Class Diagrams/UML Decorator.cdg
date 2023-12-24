@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="MenuResorts">
+  <ClassDiagramComponents>
+    <Class name="AdaptadorReserva" package="com.mycompany.menuresorts" visibility="public" isAbstract="true" xPosition="145.0" yPosition="427.0">
+      <Fields>
+        <Field name="Reserva" type="Reserva" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Reserva" name="Reserva"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="añadirServicios" returnType="void" visibility="public" isAbstract="true">
+          <Argument type="String" name="Servicios"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="AdaptadorReservaAseo" package="com.mycompany.menuresorts" visibility="public" xPosition="537.0" yPosition="505.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Reserva" name="Reserva"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="añadirServicios" returnType="void" visibility="public">
+          <Argument type="String" name="Servicios"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="AdaptadorReservaCama" package="com.mycompany.menuresorts" visibility="public" xPosition="537.0" yPosition="352.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Reserva" name="Reserva"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="añadirServicios" returnType="void" visibility="public">
+          <Argument type="String" name="Servicios"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Reserva" package="com.mycompany.menuresorts" visibility="public" xPosition="31.0" yPosition="20.0">
+      <Fields>
+        <Field name="IDBungalo" type="int" visibility="public"/>
+        <Field name="ID" type="int" visibility="public"/>
+        <Field name="Cliente" type="Cliente" visibility="package"/>
+        <Field name="FechaInicio" type="Date" visibility="public"/>
+        <Field name="FechaFin" type="Date" visibility="public"/>
+        <Field name="Personas" type="int" visibility="public"/>
+        <Field name="Servicios" type="String" visibility="public"/>
+        <Field name="ActividadesReservadas" type="ArrayList&lt;ActividadReservada&gt;" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="IDBungalo"/>
+          <Argument type="int" name="ID"/>
+          <Argument type="String" name="Nombre"/>
+          <Argument type="String" name="Apellidos"/>
+          <Argument type="String" name="NumeroFiscal"/>
+          <Argument type="int" name="Telefono"/>
+          <Argument type="Date" name="FechaInicio"/>
+          <Argument type="Date" name="FechaFin"/>
+          <Argument type="int" name="Personas"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="setServicios" returnType="void" visibility="public">
+          <Argument type="String" name="Servicios"/>
+        </Method>
+        <Method name="getServicios" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="Reserva" source="com.mycompany.menuresorts.AdaptadorReserva" target="com.mycompany.menuresorts.Reserva" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="com.mycompany.menuresorts.AdaptadorReservaAseo" target="com.mycompany.menuresorts.AdaptadorReserva"/>
+    <IsRelation name="is" source="com.mycompany.menuresorts.AdaptadorReservaCama" target="com.mycompany.menuresorts.AdaptadorReserva"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
