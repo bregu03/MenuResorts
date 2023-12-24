@@ -8,7 +8,7 @@ public class MenuClientes {
 
     /**
      * Metodo encargado del menu
-     * @param ResortActual
+     * @param ResortActual Almacen de datos del sistema
      * @return ResortActual
      */
     public Resort menu_clientes(Resort ResortActual) {
@@ -55,7 +55,7 @@ public class MenuClientes {
     
     /**
      * Metodo encargado de añadir un cliente al sistema
-     * @param ResortActual
+     * @param ResortActual Almacen de datos del sistema
      * @return ResortActual
      */
     public Resort agregarCliente(Resort ResortActual){
@@ -164,7 +164,7 @@ public class MenuClientes {
     
     /**
      * Metodo encargado de listar los clientes en el sistema
-     * @param ResortActual
+     * @param ResortActual Almacen de datos del sistema
      */
     public void listarClientes(Resort ResortActual){
         if (ResortActual.Clientes.isEmpty()){
@@ -182,7 +182,7 @@ public class MenuClientes {
     
     /**
      * Metodo encargado de mostrar un cliente en concreto
-     * @param ResortActual
+     * @param ResortActual Almacen de datos del sistema
      */
     public void mostrarCliente(Resort ResortActual){
         if (ResortActual.Clientes.isEmpty()){

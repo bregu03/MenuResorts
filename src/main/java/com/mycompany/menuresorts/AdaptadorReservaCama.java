@@ -8,7 +8,7 @@ public class AdaptadorReservaCama extends AdaptadorReserva {
 
     /**
      * Metodo de seleccion de la reserva
-     * @param Reserva
+     * @param Reserva Almacen de datos de una reserva
      */
     public AdaptadorReservaCama(Reserva Reserva) {
         super(Reserva);
@@ -16,7 +16,7 @@ public class AdaptadorReservaCama extends AdaptadorReserva {
 
     /**
      * Metodo encargado de añadir las opciones
-     * @param Servicios
+     * @param Servicios Servicios extra solicitados para el bungalo
      */
     @Override
     public void añadirServicios(String Servicios) {

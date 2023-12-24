@@ -113,9 +113,9 @@ public class MyInput {
 
     /**
      * Método que permite almacenar una clase en un fichero
-     * @param <A>
-     * @param a
-     * @param nombreFichero
+     * @param <A> Clase de la variable a serializar
+     * @param a Variable a serializar
+     * @param nombreFichero Nombre del fichero en el que se guardaran los datos
      */
     public static <A> void serialize(A a, String nombreFichero) {
         try {
@@ -132,8 +132,8 @@ public class MyInput {
 
     /**
      * Método que permite cargar una clase con los datos de un fichero
-     * @param <A>
-     * @param nombreFichero
+     * @param <A> Clase de la variable a deserializar
+     * @param nombreFichero Nombre del fichero del que se cargaran los datos
      * @return retorna los datos de la clase
      */
     public static <A> A deserialize(String nombreFichero) {

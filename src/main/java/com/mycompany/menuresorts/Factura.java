@@ -27,11 +27,12 @@ public class Factura implements Serializable {
     Reserva Reserva;
     
     /**
-     *
-     * @param ID
-     * @param Coste
-     * @param FechaFact
-     * @param Reserva */
+     * Metodo encargado de crear una factura
+     * @param ID Variable encargada del identificador de la factura
+     * @param Coste Variable del coste de la factura
+     * @param FechaFact Variable de la fecha de la factura
+     * @param Reserva Almacen de datos de una reserva
+     */
     public Factura(int ID, int Coste, Date FechaFact, Reserva Reserva){
         this.ID=ID;
         this.Coste=Coste;

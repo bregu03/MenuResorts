@@ -45,15 +45,15 @@ public class Reserva implements Serializable {
     
     /**
      * Metodo encargado de crear una reserva
-     * @param IDBungalo
-     * @param ID
-     * @param Nombre
-     * @param Apellidos
-     * @param NumeroFiscal
-     * @param Telefono
-     * @param FechaInicio
-     * @param FechaFin
-     * @param Personas
+     * @param IDBungalo Variable del identificador del bungalo
+     * @param ID Variable del identificador de la reserva
+     * @param Nombre Variable del nombre del cliente
+     * @param Apellidos Variable de los apellidos del cliente
+     * @param NumeroFiscal Variable del DNI/NIF del cliente
+     * @param Telefono Variable del telefono del cliente
+     * @param FechaInicio Variable de la fecha de inicio de la reserva
+     * @param FechaFin Variable de la fecha de finalización de la reserva
+     * @param Personas Variable del numero de personas
      */
     public Reserva(int IDBungalo, int ID, String Nombre, String Apellidos, String NumeroFiscal, int Telefono, Date FechaInicio, Date FechaFin, int Personas){
         this.IDBungalo=IDBungalo;
@@ -67,7 +67,7 @@ public class Reserva implements Serializable {
         
     /**
      * Metodo encargado de añadir los servicios especiales
-     * @param Servicios
+     * @param Servicios Servicios extra solicitados para el bungalo
      */
     public void setServicios(String Servicios) {
         this.Servicios = Servicios;
