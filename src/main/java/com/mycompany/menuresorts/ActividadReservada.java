@@ -41,11 +41,11 @@ public class ActividadReservada implements Serializable {
     
     /**
      * Constructor para crear una actividad reservada
-     * @param IDActividad
-     * @param Personas
-     * @param FechaInicio
-     * @param FechaFin
-     * @param ResortActual
+     * @param IDActividad Variable del identificador de la actividad reservada
+     * @param Personas Variable del numero de personas que tomaran parte en la actividad
+     * @param FechaInicio Variable de la fecha de inicio de la actividad
+     * @param FechaFin Variable de la fecha de finalizacion de la actividad
+     * @param ResortActual Almacen de datos del sistema
      */
     public ActividadReservada(int IDActividad, int Personas, Date FechaInicio, Date FechaFin, Resort ResortActual){
         this.IDActividad=IDActividad;

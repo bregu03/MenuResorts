@@ -30,10 +30,10 @@ public class Cliente implements Serializable {
     
     /**
      * Metodo encargado de crear un cliente
-     * @param Nombre
-     * @param Apellidos
-     * @param NumeroFiscal
-     * @param Telefono
+     * @param Nombre Variable del nombre del cliente
+     * @param Apellidos Variable de los apellidos del cliente
+     * @param NumeroFiscal Variable del DNI/NIF del cliente
+     * @param Telefono Variable del numero de telefono del cliente
      */
     public Cliente(String Nombre, String Apellidos, String NumeroFiscal, int Telefono){
         this.Nombre=Nombre;

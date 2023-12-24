@@ -10,7 +10,7 @@ public class MenuResorts {
 
     /**
      * Metodo encargado del menu principal, carga y guardado de datos
-     * @param args
+     * @param args Parametro encargado de almacenar todas las variables del programa durante su ejecucion
      * @throws ParseException
      */
     public static void main(String[] args) throws ParseException {

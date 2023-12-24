@@ -9,7 +9,7 @@ public class MenuActividades {
 
     /**
      * Metodo encargado del menu
-     * @param ResortActual
+     * @param ResortActual Almacen de datos del sistema
      * @return ResortActual
      */
     public Resort menu_actividades(Resort ResortActual) {
@@ -56,7 +56,7 @@ public class MenuActividades {
     
     /**
      * Metodo encargado de añadir una actividad al sistema
-     * @param ResortActual
+     * @param ResortActual Almacen de datos del sistema
      * @return ResortActual
      */
     public Resort agregarActividad(Resort ResortActual){
@@ -130,7 +130,7 @@ public class MenuActividades {
     
     /**
      * Metodo encargado de mostrar las actividades almacenadas en el sistema
-     * @param ResortActual
+     * @param ResortActual Almacen de datos del sistema
      */
     public void listarActividades(Resort ResortActual){
         if (ResortActual.Actividades.isEmpty()){
@@ -148,7 +148,7 @@ public class MenuActividades {
     
     /**
      * Metodo encargado de mostrar los datos de una actividad en concreto
-     * @param ResortActual
+     * @param ResortActual Almacen de datos del sistema
      */
     public void mostrarActividad(Resort ResortActual){
         if (ResortActual.Actividades.isEmpty()){
@@ -181,9 +181,5 @@ public class MenuActividades {
                 System.out.println("Precio: " + ResortActual.Actividades.get(actividadMostrar).Precio);
             }
         }
-    }
-
-    Resort añadirActividad(Resort ResortActual) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

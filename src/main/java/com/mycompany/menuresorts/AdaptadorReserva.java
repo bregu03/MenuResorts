@@ -10,7 +10,7 @@ public abstract class AdaptadorReserva {
 
     /**
      * Metodo de seleccion de la reserva
-     * @param Reserva
+     * @param Reserva Almacen de datos de una reserva
      */
     public AdaptadorReserva(Reserva Reserva) {
         this.Reserva = Reserva;
@@ -18,7 +18,7 @@ public abstract class AdaptadorReserva {
 
     /**
      * Metodo encargado de añadir las opciones
-     * @param Servicios
+     * @param Servicios Servicios extra solicitados para el bungalo
      */
     public abstract void añadirServicios(String Servicios);
 }

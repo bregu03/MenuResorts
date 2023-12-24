@@ -35,11 +35,11 @@ public class Bungalo implements Serializable {
     
     /**
      * Metodo encargado de crear un bungalo
-     * @param Capacidad
-     * @param Nombre
-     * @param Precio
-     * @param Adaptado
-     * @param ID
+     * @param Capacidad Variable de la capacidad del bungalo
+     * @param Nombre Variable del nombre del bungalo
+     * @param Precio Variable del precio del bungalo
+     * @param Adaptado Variable que define si un bungalo es adaptado o no
+     * @param ID Variable del identificador del bungalo
      */
     public Bungalo(int Capacidad, String Nombre, int Precio, boolean Adaptado, int ID){
         this.Capacidad=Capacidad;

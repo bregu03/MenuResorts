@@ -8,7 +8,7 @@ public class MenuFacturacion {
 
     /**
      * Metodo encargado del menu
-     * @param ResortActual
+     * @param ResortActual Almacen de datos del sistema
      * @return ResortActual
      */
     public Resort menu_facturacion(Resort ResortActual) {
@@ -55,8 +55,8 @@ public class MenuFacturacion {
     
     /**
      * Metodo encargado de crear las facturas y almacenarlas en el sistema
-     * @param ResortActual
-     * @return
+     * @param ResortActual Almacen de datos del sistema
+     * @return ResortActual
      */
     public Resort generarFactura(Resort ResortActual){
         return ResortActual;
@@ -64,7 +64,7 @@ public class MenuFacturacion {
     
     /**
      * Metodo encargado de mostrar las facturas de un cliente en concreto
-     * @param ResortActual
+     * @param ResortActual Almacen de datos del sistema
      */
     public void facturasCliente(Resort ResortActual){
         
@@ -72,7 +72,7 @@ public class MenuFacturacion {
     
     /**
      * Metodo encargado de mostrar una factura en concreto
-     * @param ResortActual
+     * @param ResortActual Almacen de datos del sistema
      */
     public void mostarFactura(Resort ResortActual){
         

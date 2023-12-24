@@ -11,7 +11,7 @@ public class MenuReservas {
 
     /**
      * Metodo encargado del menu
-     * @param ResortActual
+     * @param ResortActual  Almacen de datos del sistema
      * @return ResortActual
      * @throws ParseException
      */
@@ -68,7 +68,7 @@ public class MenuReservas {
     
     /**
      * Metodo encargado de añadir una reserva al sistema
-     * @param ResortActual
+     * @param ResortActual Almacen de datos del sistema
      * @return ResortActual
      * @throws ParseException
      */
@@ -366,7 +366,7 @@ public class MenuReservas {
     
     /**
      * Metodo encargado de eliminar una reserva del sistema
-     * @param ResortActual
+     * @param ResortActual Almacen de datos del sistema
      * @return ResortActual
      */
     public Resort eliminarReserva(Resort ResortActual){
@@ -453,7 +453,7 @@ public class MenuReservas {
     
     /**
      * Metodo encargado de añadir una actividad a la reserva
-     * @param ResortActual
+     * @param ResortActual Almacen de datos del sistema
      * @return ResortActual
      * @throws ParseException
      */
@@ -615,7 +615,7 @@ public class MenuReservas {
     
     /**
      * Metodo encargado de eliminar una actividad reservada de una reserva
-     * @param ResortActual
+     * @param ResortActual Almacen de datos del sistema
      * @return ResortActual
      */
     public Resort eliminarActividad(Resort ResortActual){
@@ -716,7 +716,7 @@ public class MenuReservas {
     
     /**
      * Metodo encargado de mostrar las reservas de un bungalo
-     * @param ResortActual
+     * @param ResortActual Almacen de datos del sistema
      */
     public void listarReservas(Resort ResortActual){
         if (ResortActual.Bungalos.isEmpty()){
@@ -766,7 +766,7 @@ public class MenuReservas {
     
     /**
      * Metodo encargado de mostrar una reserva en concreto
-     * @param ResortActual
+     * @param ResortActual Almacen de datos del sistema
      */
     public void mostrarReserva(Resort ResortActual){
         if (ResortActual.Reservas.isEmpty()){

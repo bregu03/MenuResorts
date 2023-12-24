@@ -26,9 +26,9 @@ public class Actividad implements Serializable {
     
     /**
      * Constructor para crear una actividad
-     * @param ID
-     * @param Descripcion
-     * @param Precio
+     * @param ID Variable del identificador de la actividad
+     * @param Descripcion Variable de la descripcion de la actividad
+     * @param Precio Variable del precio de la actividad
      */
     public Actividad(int ID, String Descripcion, int Precio){
         this.ID=ID;

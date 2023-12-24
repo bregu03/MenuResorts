@@ -8,7 +8,7 @@ public class MenuBungalos {
 
     /**
      * Metodo encargado del menu
-     * @param ResortActual
+     * @param ResortActual Almacen de datos del sistema
      * @return ResortActual
      */
     public Resort menu_bungalos(Resort ResortActual) {
@@ -61,7 +61,7 @@ public class MenuBungalos {
     
     /**
      * Metodo encargado de añadir un bungalo al sistema
-     * @param ResortActual
+     * @param ResortActual Almacen de datos del sistema
      * @return ResortActual
      */
     public Resort crearBungalo(Resort ResortActual){
@@ -165,7 +165,7 @@ public class MenuBungalos {
     
     /**
      * Metodo encargado de eliminar un bungalo del sistema
-     * @param ResortActual
+     * @param ResortActual Almacen de datos del sistema
      * @return ResortActual
      */
     public Resort eliminarBungalo(Resort ResortActual){
@@ -246,7 +246,7 @@ public class MenuBungalos {
     
     /**
      * Metodo encargado de listar los bungalos adaptados
-     * @param ResortActual
+     * @param ResortActual Almacen de datos del sistema
      */
     public void listarAdaptados(Resort ResortActual){
         if (ResortActual.Bungalos.isEmpty()){
@@ -266,7 +266,7 @@ public class MenuBungalos {
     
     /**
      * Metodo encargado de listar los bungalos no adaptados
-     * @param ResortActual
+     * @param ResortActual Almacen de datos del sistema
      */
     public void listarNoadaptados(Resort ResortActual){
         if (ResortActual.Bungalos.isEmpty()){
@@ -286,7 +286,7 @@ public class MenuBungalos {
     
     /**
      * Metodo encargado de mostrar la informacion de un bungalo en concreto
-     * @param ResortActual
+     * @param ResortActual Almacen de datos del sistema
      */
     public void mostrarInfo(Resort ResortActual){
         if (ResortActual.Bungalos.isEmpty()){
