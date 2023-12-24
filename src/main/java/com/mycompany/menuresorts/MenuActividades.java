@@ -2,11 +2,17 @@
 package com.mycompany.menuresorts;
 
 /**
- *
+ * Clase encargada de la gestion de las actividades
  * @author avbre
  */
 public class MenuActividades {
-    public static void menu_actividades() {
+
+    /**
+     * Metodo encargado del menu
+     * @param ResortActual
+     * @return ResortActual
+     */
+    public Resort menu_actividades(Resort ResortActual) {
         int opcion;
         do{
             System.out.println("");
@@ -37,30 +43,36 @@ public class MenuActividades {
                 System.out.println("Regresando al menu principal");
             }else{    
                 switch(opcion){
-                    case 1 -> añadirActividad();
+                    case 1 -> ResortActual = añadirActividad(ResortActual);
                     
-                    case 2 -> listarActividades();
+                    case 2 -> listarActividades(ResortActual);
                     
-                    case 3 -> mostrarActividad(); 
+                    case 3 -> mostrarActividad(ResortActual); 
                 }
             }
         }while (opcion !=0);
+        return ResortActual;
     }
     
-    public static void añadirActividad(){
+    /**
+     * Metodo encargado de añadir una actividad al sistema
+     * @param ResortActual
+     * @return ResortActual
+     */
+    public Resort añadirActividad(Resort ResortActual){
         System.out.println("");
         // Solicitamos la id de la actividad
         System.out.print("Ingrese la id de la actividad: ");
         int id = MyInput.readInt();
-        if (!resort.actividades.isEmpty()){
+        if (!ResortActual.Actividades.isEmpty()){
             // Bucle para comprobar si la id ya existe
             boolean existeId;
             do {
                 // Comprobamos si la id ya existe
                 existeId = false;
 
-                for (int i = 0; i < resort.actividades.size(); i++) {
-                    if (resort.actividades.get(i).id == id) {
+                for (int i = 0; i < ResortActual.Actividades.size(); i++) {
+                    if (ResortActual.Actividades.get(i).ID == id) {
                         existeId = true;
                         break;
                     }
@@ -90,9 +102,9 @@ public class MenuActividades {
             switch (respuesta) {
                 case "S", "s" -> {
                     // Si la respuesta es afirmativa, guardamos los datos
-                    actividad actividad = new actividad(id, descripcion, precio);
+                    Actividad actividad = new Actividad(id, descripcion, precio);
                     // Añadimos la actividad a la lista de actividades del resort
-                    resort.actividades.add(actividad);
+                    ResortActual.Actividades.add(actividad);
                     // Mostramos un mensaje de confirmación
                     System.out.println("Los datos se han guardado correctamente.");
                     System.out.println("Volviendo al menu...");
@@ -113,26 +125,35 @@ public class MenuActividades {
                 }
             }
         } while (!siguiente);
+        return ResortActual;
     }
     
-    public static void listarActividades(){
-        if (resort.actividades.isEmpty()){
+    /**
+     * Metodo encargado de mostrar las actividades almacenadas en el sistema
+     * @param ResortActual
+     */
+    public void listarActividades(Resort ResortActual){
+        if (ResortActual.Actividades.isEmpty()){
             System.out.println("No hay ninguna actividad almacenada en el sistema");
-        } else if (!resort.actividades.isEmpty()){
+        } else if (!ResortActual.Actividades.isEmpty()){
             System.out.println("");
             System.out.println("ACTIVIDADES");
-            for (int i = 0; i < resort.actividades.size(); i++) {
+            for (int i = 0; i < ResortActual.Actividades.size(); i++) {
                 System.out.println("");
-                System.out.println("ID: " + resort.actividades.get(i).id);
-                System.out.println("Descripción: " + resort.actividades.get(i).descripcion);
+                System.out.println("ID: " + ResortActual.Actividades.get(i).ID);
+                System.out.println("Descripción: " + ResortActual.Actividades.get(i).Descripcion);
             }
         }
     }
     
-    public static void mostrarActividad(){
-        if (resort.actividades.isEmpty()){
+    /**
+     * Metodo encargado de mostrar los datos de una actividad en concreto
+     * @param ResortActual
+     */
+    public void mostrarActividad(Resort ResortActual){
+        if (ResortActual.Actividades.isEmpty()){
             System.out.println("No hay ninguna actividad almacenada en el sistema");
-        } else if (!resort.actividades.isEmpty()){
+        } else if (!ResortActual.Actividades.isEmpty()){
             System.out.println("");
             System.out.print("Ingrese la id de la actividad que desea buscar: ");
             int idActividad = MyInput.readInt();
@@ -140,8 +161,8 @@ public class MenuActividades {
             // Comprobamos si la actividad existe
             boolean existeActividad = false;
             int actividadMostrar = 0;
-            for (int i = 0; i < resort.actividades.size(); i++) {
-                if (resort.actividades.get(i).id == idActividad) {
+            for (int i = 0; i < ResortActual.Actividades.size(); i++) {
+                if (ResortActual.Actividades.get(i).ID == idActividad) {
                     existeActividad = true;
                     actividadMostrar = i;
                     break;
@@ -155,9 +176,9 @@ public class MenuActividades {
             } else if (existeActividad){
                 // Mostramos la informacion de la actividad
                 System.out.println("");
-                System.out.println("ID: " + resort.actividades.get(actividadMostrar).id);
-                System.out.println("Descripción: " + resort.actividades.get(actividadMostrar).descripcion);
-                System.out.println("Precio: " + resort.actividades.get(actividadMostrar).precio);
+                System.out.println("ID: " + ResortActual.Actividades.get(actividadMostrar).ID);
+                System.out.println("Descripción: " + ResortActual.Actividades.get(actividadMostrar).Descripcion);
+                System.out.println("Precio: " + ResortActual.Actividades.get(actividadMostrar).Precio);
             }
         }
     }

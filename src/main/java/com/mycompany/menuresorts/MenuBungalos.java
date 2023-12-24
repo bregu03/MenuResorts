@@ -1,11 +1,17 @@
 package com.mycompany.menuresorts;
 
 /**
- *
+ * Clase encargada de gestionar los bungalos
  * @author avbre
  */
 public class MenuBungalos {
-    public static void menu_bungalos() {
+
+    /**
+     * Metodo encargado del menu
+     * @param ResortActual
+     * @return ResortActual
+     */
+    public Resort menu_bungalos(Resort ResortActual) {
         int opcion;
         do{
             System.out.println("");
@@ -38,21 +44,27 @@ public class MenuBungalos {
                 System.out.println("Regresando al menu principal");
             }else{ 
                 switch(opcion){
-                    case 1 -> crearBungalo();
+                    case 1 -> ResortActual = crearBungalo(ResortActual);
                     
-                    case 2 -> eliminarBungalo();
+                    case 2 -> ResortActual = eliminarBungalo(ResortActual);
                     
-                    case 3 -> listarAdaptados();
+                    case 3 -> listarAdaptados(ResortActual);
                     
-                    case 4 -> listarNoadaptados();
+                    case 4 -> listarNoadaptados(ResortActual);
                     
-                    case 5 -> mostrarInfo();
+                    case 5 -> mostrarInfo(ResortActual);
                 }
             }
         }while (opcion!=0);
+        return ResortActual;
     }
     
-    public static void crearBungalo(){
+    /**
+     * Metodo encargado de añadir un bungalo al sistema
+     * @param ResortActual
+     * @return ResortActual
+     */
+    public Resort crearBungalo(Resort ResortActual){
         System.out.println("");
         // Solicitamos la capacidad del bungalo
         System.out.print("Ingrese la capacidad del bungalo: ");
@@ -96,14 +108,14 @@ public class MenuBungalos {
         // Solicitamos la id del bungalo
         System.out.print("Ingrese la id del bungalo: ");
         int id = MyInput.readInt();
-        if (!resort.bungalos.isEmpty()){
+        if (!ResortActual.Bungalos.isEmpty()){
             // Bucle para comprobar si la id ya existe
             boolean existeId;
             do {
                 // Comprobamos si la id ya existe
                 existeId = false;
-                for (int i = 0; i < resort.bungalos.size(); i++) {
-                    if (resort.bungalos.get(i).id == id) {
+                for (int i = 0; i < ResortActual.Bungalos.size(); i++) {
+                    if (ResortActual.Bungalos.get(i).ID == id) {
                         existeId = true;
                         break;
                     }
@@ -125,9 +137,9 @@ public class MenuBungalos {
             switch (respuesta2) {
                 case "S", "s" -> {
                     // Si la respuesta es afirmativa, guardamos los datos
-                    bungalo bungalo = new bungalo(capacidad, nombre, precio, adaptado, id);
+                    Bungalo bungalo = new Bungalo(capacidad, nombre, precio, adaptado, id);
                     // Añadimos el bungalo a la lista de bungalos del resort
-                    resort.bungalos.add(bungalo);
+                    ResortActual.Bungalos.add(bungalo);
                     // Mostramos un mensaje de confirmación
                     System.out.println("Los datos se han guardado correctamente.");
                     System.out.println("Volviendo al menu...");
@@ -148,12 +160,18 @@ public class MenuBungalos {
                 }
             }
         } while (!siguiente2);
+        return ResortActual;
     }
     
-    public static void eliminarBungalo(){
-        if (resort.bungalos.isEmpty()){
+    /**
+     * Metodo encargado de eliminar un bungalo del sistema
+     * @param ResortActual
+     * @return ResortActual
+     */
+    public Resort eliminarBungalo(Resort ResortActual){
+        if (ResortActual.Bungalos.isEmpty()){
             System.out.println("No hay ningun bungalo almacenado en el sistema");
-        } else if (!resort.bungalos.isEmpty()){
+        } else if (!ResortActual.Bungalos.isEmpty()){
             // Solicitamos la id del bungalo
             System.out.println("");
             System.out.print("Ingrese la id del bungalo que desea eliminar: ");
@@ -162,8 +180,8 @@ public class MenuBungalos {
             // Comprobamos si el bungalo existe
             boolean existeBungalo = false;
             int bungaloEliminar = 0;
-            for (int i = 0; i < resort.bungalos.size(); i++) {
-                if (resort.bungalos.get(i).id == idBungalo) {
+            for (int i = 0; i < ResortActual.Bungalos.size(); i++) {
+                if (ResortActual.Bungalos.get(i).ID == idBungalo) {
                     existeBungalo = true;
                     bungaloEliminar = i;
                     break;
@@ -177,7 +195,7 @@ public class MenuBungalos {
             } else if (existeBungalo){
                 // Comprobamos si el bungalo está reservado
                 boolean estaReservado = false;
-                if (resort.reservas.get(bungaloEliminar).idBungalo == idBungalo) {
+                if (ResortActual.Reservas.get(bungaloEliminar).IDBungalo == idBungalo) {
                     estaReservado = true;
                 }
 
@@ -188,11 +206,11 @@ public class MenuBungalos {
                 } else if (!estaReservado) {
                     // Imprime los datos del bungalo
                     System.out.println("");
-                    System.out.println("Capacidad: " + resort.bungalos.get(bungaloEliminar).capacidad);
-                    System.out.println("Nombre: " + resort.bungalos.get(bungaloEliminar).nombre);
-                    System.out.println("Precio: " + resort.bungalos.get(bungaloEliminar).precio);
-                    System.out.println("Adaptado: " + resort.bungalos.get(bungaloEliminar).adaptado);
-                    System.out.println("ID: " + resort.bungalos.get(bungaloEliminar).id);
+                    System.out.println("Capacidad: " + ResortActual.Bungalos.get(bungaloEliminar).Capacidad);
+                    System.out.println("Nombre: " + ResortActual.Bungalos.get(bungaloEliminar).Nombre);
+                    System.out.println("Precio: " + ResortActual.Bungalos.get(bungaloEliminar).Precio);
+                    System.out.println("Adaptado: " + ResortActual.Bungalos.get(bungaloEliminar).Adaptado);
+                    System.out.println("ID: " + ResortActual.Bungalos.get(bungaloEliminar).ID);
                     System.out.print("¿Desea eliminar este bungalo? (S/N): ");
                     String respuesta = MyInput.readString();
                     boolean siguiente;
@@ -200,7 +218,7 @@ public class MenuBungalos {
                         switch (respuesta) {
                             case "S", "s" -> {
                                 // Si la respuesta es afirmativa, eliminamos el bungalo del array
-                                resort.bungalos.remove(bungaloEliminar);
+                                ResortActual.Bungalos.remove(bungaloEliminar);
                                 System.out.println("El bungalo con id " + idBungalo + " ha sido eliminado correctamente.");
                                 System.out.println("Volviendo al menu...");
                                 siguiente = true;
@@ -223,44 +241,57 @@ public class MenuBungalos {
                 }
             }
         }
+        return ResortActual;
     }
     
-    public static void listarAdaptados(){
-        if (resort.bungalos.isEmpty()){
+    /**
+     * Metodo encargado de listar los bungalos adaptados
+     * @param ResortActual
+     */
+    public void listarAdaptados(Resort ResortActual){
+        if (ResortActual.Bungalos.isEmpty()){
             System.out.println("No hay ningun bungalo almacenado en el sistema");
-        } else if (!resort.bungalos.isEmpty()){
+        } else if (!ResortActual.Bungalos.isEmpty()){
             System.out.println("");
             System.out.println("BUNGALOS ADAPTADOS");
-            for (int i = 0; i < resort.bungalos.size(); i++) {
-                if (resort.bungalos.get(i).adaptado == true) {
+            for (int i = 0; i < ResortActual.Bungalos.size(); i++) {
+                if (ResortActual.Bungalos.get(i).Adaptado == true) {
                     System.out.println("");
-                    System.out.println("ID: " + resort.bungalos.get(i).id);
-                    System.out.println("Capacidad: " + resort.bungalos.get(i).capacidad);
+                    System.out.println("ID: " + ResortActual.Bungalos.get(i).ID);
+                    System.out.println("Capacidad: " + ResortActual.Bungalos.get(i).Capacidad);
                 }
             }
         }
     }
     
-    public static void listarNoadaptados(){
-        if (resort.bungalos.isEmpty()){
+    /**
+     * Metodo encargado de listar los bungalos no adaptados
+     * @param ResortActual
+     */
+    public void listarNoadaptados(Resort ResortActual){
+        if (ResortActual.Bungalos.isEmpty()){
             System.out.println("No hay ningun bungalo almacenado en el sistema");
-        } else if (!resort.bungalos.isEmpty()){
+        } else if (!ResortActual.Bungalos.isEmpty()){
             System.out.println("");
             System.out.println("BUNGALOS NO ADAPTADOS");
-            for (int i = 0; i < resort.bungalos.size(); i++) {
-                if (resort.bungalos.get(i).adaptado == false) {
+            for (int i = 0; i < ResortActual.Bungalos.size(); i++) {
+                if (ResortActual.Bungalos.get(i).Adaptado == false) {
                     System.out.println("");
-                    System.out.println("ID: " + resort.bungalos.get(i).id);
-                    System.out.println("Capacidad: " + resort.bungalos.get(i).capacidad);
+                    System.out.println("ID: " + ResortActual.Bungalos.get(i).ID);
+                    System.out.println("Capacidad: " + ResortActual.Bungalos.get(i).Capacidad);
                 }
             }
         }
     }
     
-    public static void mostrarInfo(){
-        if (resort.bungalos.isEmpty()){
+    /**
+     * Metodo encargado de mostrar la informacion de un bungalo en concreto
+     * @param ResortActual
+     */
+    public void mostrarInfo(Resort ResortActual){
+        if (ResortActual.Bungalos.isEmpty()){
             System.out.println("No hay ningun bungalo almacenado en el sistema");
-        } else if (!resort.bungalos.isEmpty()){
+        } else if (!ResortActual.Bungalos.isEmpty()){
             System.out.println("");
             System.out.print("Ingrese la id del bungalo que desea buscar: ");
             int idBungalo = MyInput.readInt();
@@ -268,8 +299,8 @@ public class MenuBungalos {
             // Comprobamos si el bungalo existe
             boolean existeBungalo = false;
             int bungaloMostrar = 0;
-            for (int i = 0; i < resort.bungalos.size(); i++) {
-                if (resort.bungalos.get(i).id == idBungalo) {
+            for (int i = 0; i < ResortActual.Bungalos.size(); i++) {
+                if (ResortActual.Bungalos.get(i).ID == idBungalo) {
                     existeBungalo = true;
                     bungaloMostrar = i;
                     break;
@@ -283,11 +314,11 @@ public class MenuBungalos {
             } else if (existeBungalo){
                 // Mostramos la informacion del bungalo
                 System.out.println("");
-                System.out.println("Capacidad: " + resort.bungalos.get(bungaloMostrar).capacidad);
-                System.out.println("Nombre: " + resort.bungalos.get(bungaloMostrar).nombre);
-                System.out.println("Precio: " + resort.bungalos.get(bungaloMostrar).precio);
-                System.out.println("Adaptado: " + resort.bungalos.get(bungaloMostrar).adaptado);
-                System.out.println("ID: " + resort.bungalos.get(bungaloMostrar).id);
+                System.out.println("Capacidad: " + ResortActual.Bungalos.get(bungaloMostrar).Capacidad);
+                System.out.println("Nombre: " + ResortActual.Bungalos.get(bungaloMostrar).Nombre);
+                System.out.println("Precio: " + ResortActual.Bungalos.get(bungaloMostrar).Precio);
+                System.out.println("Adaptado: " + ResortActual.Bungalos.get(bungaloMostrar).Adaptado);
+                System.out.println("ID: " + ResortActual.Bungalos.get(bungaloMostrar).ID);
             }
         }
     }

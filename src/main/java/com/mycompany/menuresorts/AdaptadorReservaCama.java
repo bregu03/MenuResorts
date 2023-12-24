@@ -1,17 +1,26 @@
 package com.mycompany.menuresorts;
 
 /**
- *
+ * Clase encargada de añadir el servidio de cama articulada
  * @author Alejandro
  */
 public class AdaptadorReservaCama extends AdaptadorReserva {
 
-    public AdaptadorReservaCama(reserva reserva) {
-        super(reserva);
+    /**
+     * Metodo de seleccion de la reserva
+     * @param Reserva
+     */
+    public AdaptadorReservaCama(Reserva Reserva) {
+        super(Reserva);
     }
 
-    public static void añadirServicios(String servicios) {
-        servicios += " cama articulada |";
-        reserva.setServicios(servicios);
+    /**
+     * Metodo encargado de añadir las opciones
+     * @param Servicios
+     */
+    @Override
+    public void añadirServicios(String Servicios) {
+        Servicios += " cama articulada |";
+        Reserva.setServicios(Servicios);
     }
 }

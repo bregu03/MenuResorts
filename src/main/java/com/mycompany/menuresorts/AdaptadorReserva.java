@@ -1,16 +1,24 @@
 package com.mycompany.menuresorts;
 
 /**
- *
+ * Clase abstracta del patron decorator
  * @author Alejandro
  */
 public abstract class AdaptadorReserva {
 
-    static reserva reserva;
+    Reserva Reserva;
 
-    public AdaptadorReserva(reserva reserva) {
-        this.reserva = reserva;
+    /**
+     * Metodo de seleccion de la reserva
+     * @param Reserva
+     */
+    public AdaptadorReserva(Reserva Reserva) {
+        this.Reserva = Reserva;
     }
 
-    public static void añadirServicios(String servicios){}
+    /**
+     * Metodo encargado de añadir las opciones
+     * @param Servicios
+     */
+    public void añadirServicios(String Servicios){}
 }

@@ -3,16 +3,27 @@ package com.mycompany.menuresorts;
 import java.text.ParseException;
 
 /**
- *
+ * Clase encargada del menu principal, almacenamiento y carga de los datos
  * @author avbre
  */
 public class MenuResorts {
-    
-    static resort resort = new resort();
 
+    /**
+     * Metodo encargado del menu principal, carga y guardado de datos
+     * @param args
+     * @throws ParseException
+     */
     public static void main(String[] args) throws ParseException {
         
-        resort = MyInput.deserialize("resort.dat");
+        Resort ResortActual = new Resort();
+        
+        Resort ResortCargado;
+        ResortCargado = MyInput.deserialize("resort.dat");
+        
+        if(ResortCargado != null){
+            ResortActual = ResortCargado;
+            System.out.println("Datos cargados satisfactoriamente");
+        }
 
         int opcion;
 
@@ -50,18 +61,33 @@ public class MenuResorts {
             } else {
                 // Si la opción es válida, la ejecutamos
                 switch (opcion) {
-                    case 1 -> // Gestión de bungalós
-                        MenuBungalos.menu_bungalos();
-                    case 2 -> // Gestión de clientes
-                        MenuClientes.menu_clientes();
-                    case 3 -> // Gestión de las actividades
-                        MenuActividades.menu_actividades();
-                    case 4 -> // Gestión de reservas
-                        MenuReservas.menu_reservas();
-                    case 5 -> // Gestión de facturación
-                        MenuFacturacion.menu_facturacion();
+                    case 1 -> {
+                        // Crear una instancia de MenuBungalos y llamar a su método no estático
+                        MenuBungalos menuBungalos = new MenuBungalos();
+                        ResortActual = menuBungalos.menu_bungalos(ResortActual);
+                    }
+                    case 2 -> {
+                        // Crear una instancia de MenuClientes y llamar a su método no estático
+                        MenuClientes menuClientes = new MenuClientes();
+                        ResortActual = menuClientes.menu_clientes(ResortActual);
+                    }
+                    case 3 -> {
+                        // Crear una instancia de MenuActividades y llamar a su método no estático
+                        MenuActividades menuActividades = new MenuActividades();
+                        ResortActual = menuActividades.menu_actividades(ResortActual);
+                    }
+                    case 4 -> {
+                        // Crear una instancia de MenuReservas y llamar a su método no estático
+                        MenuReservas menuReservas = new MenuReservas();
+                        ResortActual = menuReservas.menu_reservas(ResortActual);
+                    }
+                    case 5 -> {
+                        // Crear una instancia de MenuFacturacion y llamar a su método no estático
+                        MenuFacturacion menuFacturacion = new MenuFacturacion();
+                        ResortActual = menuFacturacion.menu_facturacion(ResortActual);
+                    }
                     case 6 -> // Salvar datos
-                        MyInput.serialize(resort, "resort.dat");
+                        MyInput.serialize(ResortActual, "resort.dat");
                 }
             }
         } while (opcion != 0);

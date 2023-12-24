@@ -1,11 +1,17 @@
 package com.mycompany.menuresorts;
 
 /**
- *
+ * Clase encargada de gestionar los clientes
  * @author avbre
  */
 public class MenuClientes {
-    public static void menu_clientes() {
+
+    /**
+     * Metodo encargado del menu
+     * @param ResortActual
+     * @return ResortActual
+     */
+    public Resort menu_clientes(Resort ResortActual) {
         int opcion;
         do{
             System.out.println("");
@@ -36,17 +42,23 @@ public class MenuClientes {
                 System.out.println("Regresando al menu principal");
             }else{ 
                 switch(opcion){
-                    case 1 -> añadirCliente();
+                    case 1 -> ResortActual = añadirCliente(ResortActual);
                     
-                    case 2 -> listarClientes();
+                    case 2 -> listarClientes(ResortActual);
                     
-                    case 3 -> mostrarCliente();
+                    case 3 -> mostrarCliente(ResortActual);
                 }
             }
         }while (opcion!=0);
+        return ResortActual;
     }
     
-    public static void añadirCliente(){
+    /**
+     * Metodo encargado de añadir un cliente al sistema
+     * @param ResortActual
+     * @return ResortActual
+     */
+    public Resort añadirCliente(Resort ResortActual){
         System.out.println("");
         // Solicitamos el nombre del cliente
         System.out.print("Ingrese el nombre del cliente: ");
@@ -60,15 +72,15 @@ public class MenuClientes {
         System.out.print("Ingrese el DNI/NIF del cliente: ");
         String numeroFiscal = MyInput.readString();
         boolean continuar = true;
-        if (!resort.clientes.isEmpty()){
+        if (!ResortActual.Clientes.isEmpty()){
             // Bucle para comprobar si el cliente ya existe
             boolean existeCliente;
             do {
                 // Comprobamos si la id ya existe
                 existeCliente = false;
 
-                for (int i = 0; i < resort.clientes.size(); i++) {
-                    if (resort.clientes.get(i).numeroFiscal.equals(numeroFiscal)) {
+                for (int i = 0; i < ResortActual.Clientes.size(); i++) {
+                    if (ResortActual.Clientes.get(i).NumeroFiscal.equals(numeroFiscal)) {
                         existeCliente = true;
                         break;
                     }
@@ -123,9 +135,9 @@ public class MenuClientes {
                 switch (respuesta2) {
                     case "S", "s" -> {
                         // Si la respuesta es afirmativa, guardamos los datos
-                        cliente cliente = new cliente(nombre, apellidos, numeroFiscal, telefono);
+                        Cliente cliente = new Cliente(nombre, apellidos, numeroFiscal, telefono);
                         // Añadimos el cliente a la lista de clientes del resort
-                        resort.clientes.add(cliente);
+                        ResortActual.Clientes.add(cliente);
                         // Mostramos un mensaje de confirmación
                         System.out.println("Los datos se han guardado correctamente.");
                         System.out.println("Volviendo al menu...");
@@ -147,26 +159,35 @@ public class MenuClientes {
                 }
             } while (!siguiente2);
         }
+        return ResortActual;
     }
     
-    public static void listarClientes(){
-        if (resort.clientes.isEmpty()){
+    /**
+     * Metodo encargado de listar los clientes en el sistema
+     * @param ResortActual
+     */
+    public void listarClientes(Resort ResortActual){
+        if (ResortActual.Clientes.isEmpty()){
             System.out.println("No hay ningun cliente almacenado en el sistema");
-        } else if (!resort.clientes.isEmpty()){
+        } else if (!ResortActual.Clientes.isEmpty()){
             System.out.println("");
             System.out.println("CLIENTES");
-            for (int i = 0; i < resort.clientes.size(); i++) {
+            for (int i = 0; i < ResortActual.Clientes.size(); i++) {
                 System.out.println("");
-                System.out.println("Nombre: " + resort.clientes.get(i).nombre);
-                System.out.println("DNI/NIF: " + resort.clientes.get(i).numeroFiscal);
+                System.out.println("Nombre: " + ResortActual.Clientes.get(i).Nombre);
+                System.out.println("DNI/NIF: " + ResortActual.Clientes.get(i).NumeroFiscal);
             }
         }
     }
     
-    public static void mostrarCliente(){
-        if (resort.clientes.isEmpty()){
+    /**
+     * Metodo encargado de mostrar un cliente en concreto
+     * @param ResortActual
+     */
+    public static void mostrarCliente(Resort ResortActual){
+        if (ResortActual.Clientes.isEmpty()){
             System.out.println("No hay ningun cliente almacenado en el sistema");
-        } else if (!resort.clientes.isEmpty()){
+        } else if (!ResortActual.Clientes.isEmpty()){
             System.out.println("");
             System.out.print("Ingrese el DNI/NIF del cliente que desea buscar: ");
             String numeroFiscal = MyInput.readString();
@@ -174,8 +195,8 @@ public class MenuClientes {
             // Comprobamos si el cliente existe
             boolean existeCliente = false;
             int clienteMostrar = 0;
-            for (int i = 0; i < resort.clientes.size(); i++) {
-                if (resort.clientes.get(i).numeroFiscal.equals(numeroFiscal)) {
+            for (int i = 0; i < ResortActual.Clientes.size(); i++) {
+                if (ResortActual.Clientes.get(i).NumeroFiscal.equals(numeroFiscal)) {
                     existeCliente = true;
                     clienteMostrar = i;
                     break;
@@ -189,10 +210,10 @@ public class MenuClientes {
             } else if (existeCliente){
                 // Mostramos la informacion del cliente
                 System.out.println("");
-                System.out.println("Nombre: " + resort.clientes.get(clienteMostrar).nombre);
-                System.out.println("Apellidos: " + resort.clientes.get(clienteMostrar).apellidos);
-                System.out.println("DNI/NIF: " + resort.clientes.get(clienteMostrar).numeroFiscal);
-                System.out.println("Telefono: " + resort.clientes.get(clienteMostrar).telefono);
+                System.out.println("Nombre: " + ResortActual.Clientes.get(clienteMostrar).Nombre);
+                System.out.println("Apellidos: " + ResortActual.Clientes.get(clienteMostrar).Apellidos);
+                System.out.println("DNI/NIF: " + ResortActual.Clientes.get(clienteMostrar).NumeroFiscal);
+                System.out.println("Telefono: " + ResortActual.Clientes.get(clienteMostrar).Telefono);
             }
         }
     }

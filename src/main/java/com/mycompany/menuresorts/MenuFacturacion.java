@@ -1,11 +1,17 @@
 package com.mycompany.menuresorts;
 
 /**
- *
+ * Clase encargada de gestionar las facturas
  * @author avbre
  */
 public class MenuFacturacion {
-    public static void menu_facturacion() {
+
+    /**
+     * Metodo encargado del menu
+     * @param ResortActual
+     * @return ResortActual
+     */
+    public Resort menu_facturacion(Resort ResortActual) {
         int opcion;
         do{
             System.out.println("");
@@ -36,25 +42,26 @@ public class MenuFacturacion {
                 System.out.println("Regresando al menu principal");
             }else{ 
                 switch(opcion){
-                    case 1 -> generarFactura();
+                    case 1 -> ResortActual = generarFactura(ResortActual);
                     
-                    case 2 -> facturasCliente();
+                    case 2 -> facturasCliente(ResortActual);
                     
-                    case 3 -> mostarFactura();
+                    case 3 -> mostarFactura(ResortActual);
                 }
             }
         }while (opcion!=0);
+        return ResortActual;
     }
     
-    public static void generarFactura(){
+    public Resort generarFactura(Resort ResortActual){
+        return ResortActual;
+    }
+    
+    public void facturasCliente(Resort ResortActual){
         
     }
     
-    public static void facturasCliente(){
-        
-    }
-    
-    public static void mostarFactura(){
+    public void mostarFactura(Resort ResortActual){
         
     }
 }
