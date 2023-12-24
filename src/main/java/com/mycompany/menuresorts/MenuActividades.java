@@ -43,7 +43,7 @@ public class MenuActividades {
                 System.out.println("Regresando al menu principal");
             }else{    
                 switch(opcion){
-                    case 1 -> ResortActual = añadirActividad(ResortActual);
+                    case 1 -> ResortActual = agregarActividad(ResortActual);
                     
                     case 2 -> listarActividades(ResortActual);
                     
@@ -59,7 +59,7 @@ public class MenuActividades {
      * @param ResortActual
      * @return ResortActual
      */
-    public Resort añadirActividad(Resort ResortActual){
+    public Resort agregarActividad(Resort ResortActual){
         System.out.println("");
         // Solicitamos la id de la actividad
         System.out.print("Ingrese la id de la actividad: ");
@@ -181,5 +181,9 @@ public class MenuActividades {
                 System.out.println("Precio: " + ResortActual.Actividades.get(actividadMostrar).Precio);
             }
         }
+    }
+
+    Resort añadirActividad(Resort ResortActual) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

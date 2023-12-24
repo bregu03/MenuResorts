@@ -17,36 +17,21 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class MenuClientesTest {
     
-    /**
-     *
-     */
     public MenuClientesTest() {
     }
     
-    /**
-     *
-     */
     @BeforeAll
     public static void setUpClass() {
     }
     
-    /**
-     *
-     */
     @AfterAll
     public static void tearDownClass() {
     }
     
-    /**
-     *
-     */
     @BeforeEach
     public void setUp() {
     }
     
-    /**
-     *
-     */
     @AfterEach
     public void tearDown() {
     }
@@ -67,15 +52,15 @@ public class MenuClientesTest {
     }
 
     /**
-     * Test of añadirCliente method, of class MenuClientes.
+     * Test of agregarCliente method, of class MenuClientes.
      */
     @Test
-    public void testAñadirCliente() {
-        System.out.println("a\u00f1adirCliente");
+    public void testAgregarCliente() {
+        System.out.println("agregarCliente");
         Resort ResortActual = null;
         MenuClientes instance = new MenuClientes();
         Resort expResult = null;
-        Resort result = instance.añadirCliente(ResortActual);
+        Resort result = instance.agregarCliente(ResortActual);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -101,7 +86,8 @@ public class MenuClientesTest {
     public void testMostrarCliente() {
         System.out.println("mostrarCliente");
         Resort ResortActual = null;
-        MenuClientes.mostrarCliente(ResortActual);
+        MenuClientes instance = new MenuClientes();
+        instance.mostrarCliente(ResortActual);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }

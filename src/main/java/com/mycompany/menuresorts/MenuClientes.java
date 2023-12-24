@@ -42,7 +42,7 @@ public class MenuClientes {
                 System.out.println("Regresando al menu principal");
             }else{ 
                 switch(opcion){
-                    case 1 -> ResortActual = añadirCliente(ResortActual);
+                    case 1 -> ResortActual = agregarCliente(ResortActual);
                     
                     case 2 -> listarClientes(ResortActual);
                     
@@ -58,7 +58,7 @@ public class MenuClientes {
      * @param ResortActual
      * @return ResortActual
      */
-    public Resort añadirCliente(Resort ResortActual){
+    public Resort agregarCliente(Resort ResortActual){
         System.out.println("");
         // Solicitamos el nombre del cliente
         System.out.print("Ingrese el nombre del cliente: ");
@@ -184,7 +184,7 @@ public class MenuClientes {
      * Metodo encargado de mostrar un cliente en concreto
      * @param ResortActual
      */
-    public static void mostrarCliente(Resort ResortActual){
+    public void mostrarCliente(Resort ResortActual){
         if (ResortActual.Clientes.isEmpty()){
             System.out.println("No hay ningun cliente almacenado en el sistema");
         } else if (!ResortActual.Clientes.isEmpty()){

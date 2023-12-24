@@ -53,7 +53,7 @@ public class MenuReservas {
 
                     case 2 -> ResortActual = eliminarReserva(ResortActual);
                     
-                    case 3 -> ResortActual = añadirActividad(ResortActual);
+                    case 3 -> ResortActual = agregarActividad(ResortActual);
                     
                     case 4 -> ResortActual = eliminarActividad(ResortActual);
                     
@@ -457,7 +457,7 @@ public class MenuReservas {
      * @return ResortActual
      * @throws ParseException
      */
-    public Resort añadirActividad(Resort ResortActual) throws ParseException{
+    public Resort agregarActividad(Resort ResortActual) throws ParseException{
         Date fechaInicio, fechaFin;
         int personas;
         if (ResortActual.Reservas.isEmpty()){

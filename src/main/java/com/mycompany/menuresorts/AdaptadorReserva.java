@@ -20,5 +20,5 @@ public abstract class AdaptadorReserva {
      * Metodo encargado de añadir las opciones
      * @param Servicios
      */
-    public void añadirServicios(String Servicios){}
+    public abstract void añadirServicios(String Servicios);
 }

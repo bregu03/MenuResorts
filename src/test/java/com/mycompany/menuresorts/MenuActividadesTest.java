@@ -75,7 +75,7 @@ public class MenuActividadesTest {
         Resort ResortActual = null;
         MenuActividades instance = new MenuActividades();
         Resort expResult = null;
-        Resort result = instance.añadirActividad(ResortActual);
+        Resort result = instance.agregarActividad(ResortActual);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
