@@ -9,10 +9,9 @@ public class actividad {
     public static String descripcion;
     public static int precio;
     
-        public actividad(int id, String descripcion, int precio){
-            actividad.id=id;
-            actividad.descripcion=descripcion;
-            actividad.precio=precio;
-        }
-        
+    public actividad(int id, String descripcion, int precio){
+        actividad.id=id;
+        actividad.descripcion=descripcion;
+        actividad.precio=precio;
+    }
 }

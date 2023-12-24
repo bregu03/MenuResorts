@@ -1,4 +1,3 @@
-
 package com.mycompany.menuresorts;
 
 /**
@@ -33,29 +32,29 @@ public class MenuFacturacion {
                     System.out.println("La opción no es válida.");
                 }
             } else if (opcion == 0){
+                //volver al main menuresorts
                 System.out.println("Regresando al menu principal");
             }else{ 
                 switch(opcion){
-                    case 1:
-                        
-                    break;
+                    case 1 -> generarFactura();
                     
-                    case 2:
-                        
-                    break;
+                    case 2 -> facturasCliente();
                     
-                    case 3:
-                        
-                    break;
-                   
-                    case 0:
-                        //volver al main menuresorts
-                    break;
-                     
-                   
+                    case 3 -> mostarFactura();
                 }
             }
         }while (opcion!=0);
     }
-
+    
+    public static void generarFactura(){
+        
+    }
+    
+    public static void facturasCliente(){
+        
+    }
+    
+    public static void mostarFactura(){
+        
+    }
 }

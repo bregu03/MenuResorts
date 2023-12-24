@@ -1,4 +1,3 @@
-
 package com.mycompany.menuresorts;
 
 /**
@@ -35,37 +34,21 @@ public class MenuBungalos {
                     System.out.println("La opción no es válida.");
                 }
             } else if (opcion == 0){
+                //volver al main menuresorts
                 System.out.println("Regresando al menu principal");
             }else{ 
                 switch(opcion){
-                    case 1:
-                        crearBungalo();
-                    break;
+                    case 1 -> crearBungalo();
                     
-                    case 2:
-                        eliminarBungalo();
-                    break;
+                    case 2 -> eliminarBungalo();
                     
-                    case 3:
-                        listarAdaptados();
-                    break;
+                    case 3 -> listarAdaptados();
                     
-                    case 4:
-                        listarNoadaptados();
-                    break;
+                    case 4 -> listarNoadaptados();
                     
-                    case 5:
-                        mostrarInfo();
-                    break;
-                    
-                    case 0:
-                        //volver al main menuresorts
-                    break;
-                     
-                   
+                    case 5 -> mostrarInfo();
                 }
             }
-          
         }while (opcion!=0);
     }
     
@@ -89,20 +72,24 @@ public class MenuBungalos {
         boolean adaptado, siguiente1;
         adaptado = true;
         do {
-            if ((respuesta1.equals("S")) || (respuesta1.equals("s"))){
-                // Si la respuesta es afirmativa, cambiamos la variable adaptado a true
-                adaptado = true;
-                siguiente1 = true;
-            } else if ((respuesta1.equals("N")) || (respuesta1.equals("n"))){
-                // Si la respuesta es negativa, cambiamos la variable adaptado a false
-                adaptado = false;
-                siguiente1 = true;
-            } else{
-                // Si no se reconoce la respuesta, repetimos la pregunta
-                siguiente1 = false;
-                System.out.println("Respuesta no valida, introduzca un valor valido");
-                System.out.print("¿El bungalo es accesible para personas con discapacidad? (S/N): ");
-                respuesta1 = MyInput.readString();
+            switch (respuesta1) {
+                case "S", "s" -> {
+                    // Si la respuesta es afirmativa, cambiamos la variable adaptado a true
+                    adaptado = true;
+                    siguiente1 = true;
+                }
+                case "N", "n" -> {
+                    // Si la respuesta es negativa, cambiamos la variable adaptado a false
+                    adaptado = false;
+                    siguiente1 = true;
+                }
+                default -> {
+                    // Si no se reconoce la respuesta, repetimos la pregunta
+                    siguiente1 = false;
+                    System.out.println("Respuesta no valida, introduzca un valor valido");
+                    System.out.print("¿El bungalo es accesible para personas con discapacidad? (S/N): ");
+                    respuesta1 = MyInput.readString();
+                }
             }
         } while (!siguiente1);
         
@@ -115,7 +102,6 @@ public class MenuBungalos {
             do {
                 // Comprobamos si la id ya existe
                 existeId = false;
-
                 for (int i = 0; i < resort.bungalos.size(); i++) {
                     if (resort.bungalos.get(i).id == id) {
                         existeId = true;
@@ -136,26 +122,30 @@ public class MenuBungalos {
         String respuesta2 = MyInput.readString();
         boolean siguiente2;
         do {
-            if ((respuesta2.equals("S")) || (respuesta2.equals("s"))){
-                // Si la respuesta es afirmativa, guardamos los datos
-                bungalo bungalo = new bungalo(capacidad, nombre, precio, adaptado, id);
-                // Añadimos el bungalo a la lista de bungalos del resort
-                resort.bungalos.add(bungalo);
-                // Mostramos un mensaje de confirmación
-                System.out.println("Los datos se han guardado correctamente.");
-                System.out.println("Volviendo al menu...");
-                siguiente2 = true;
-            } else if ((respuesta2.equals("N")) || (respuesta2.equals("n"))){
-                // Si la respuesta es negativa, mostramos un mensage y volvemos al menu
-                System.out.println("Los datos no han sido guardados.");
-                System.out.println("Volviendo al menu...");
-                siguiente2 = true;
-            } else{
-                // Si no se reconoce la respuesta, repetimos la pregunta
-                System.out.println("Respuesta no valida, introduzca un valor valido");
-                System.out.print("¿Son correctos estos datos? (S/N): ");
-                respuesta2 = MyInput.readString();
-                siguiente2 = false;
+            switch (respuesta2) {
+                case "S", "s" -> {
+                    // Si la respuesta es afirmativa, guardamos los datos
+                    bungalo bungalo = new bungalo(capacidad, nombre, precio, adaptado, id);
+                    // Añadimos el bungalo a la lista de bungalos del resort
+                    resort.bungalos.add(bungalo);
+                    // Mostramos un mensaje de confirmación
+                    System.out.println("Los datos se han guardado correctamente.");
+                    System.out.println("Volviendo al menu...");
+                    siguiente2 = true;
+                }
+                case "N", "n" -> {
+                    // Si la respuesta es negativa, mostramos un mensage y volvemos al menu
+                    System.out.println("Los datos no han sido guardados.");
+                    System.out.println("Volviendo al menu...");
+                    siguiente2 = true;
+                }
+                default -> {
+                    // Si no se reconoce la respuesta, repetimos la pregunta
+                    System.out.println("Respuesta no valida, introduzca un valor valido");
+                    System.out.print("¿Son correctos estos datos? (S/N): ");
+                    respuesta2 = MyInput.readString();
+                    siguiente2 = false;
+                }
             }
         } while (!siguiente2);
     }
@@ -207,23 +197,27 @@ public class MenuBungalos {
                     String respuesta = MyInput.readString();
                     boolean siguiente;
                     do {
-                        if ((respuesta.equals("S")) || (respuesta.equals("s"))){
-                            // Si la respuesta es afirmativa, eliminamos el bungalo del array
-                            resort.bungalos.remove(bungaloEliminar);
-                            System.out.println("El bungalo con id " + idBungalo + " ha sido eliminado correctamente.");
-                            System.out.println("Volviendo al menu...");
-                            siguiente = true;
-                        } else if ((respuesta.equals("N")) || (respuesta.equals("n"))){
-                            // Si la respuesta es negativa, mostramos un mensage y volvemos al menu
-                            System.out.println("Los datos no han sido borrados.");
-                            System.out.println("Volviendo al menu...");
-                            siguiente = true;
-                        } else{
-                            // Si no se reconoce la respuesta, repetimos la pregunta
-                            System.out.println("Respuesta no valida, introduzca un valor valido");
-                            System.out.print("¿Desea eliminar este bungalo? (S/N): ");
-                            respuesta = MyInput.readString();
-                            siguiente = false;
+                        switch (respuesta) {
+                            case "S", "s" -> {
+                                // Si la respuesta es afirmativa, eliminamos el bungalo del array
+                                resort.bungalos.remove(bungaloEliminar);
+                                System.out.println("El bungalo con id " + idBungalo + " ha sido eliminado correctamente.");
+                                System.out.println("Volviendo al menu...");
+                                siguiente = true;
+                            }
+                            case "N", "n" -> {
+                                // Si la respuesta es negativa, mostramos un mensage y volvemos al menu
+                                System.out.println("Los datos no han sido borrados.");
+                                System.out.println("Volviendo al menu...");
+                                siguiente = true;
+                            }
+                            default -> {
+                                // Si no se reconoce la respuesta, repetimos la pregunta
+                                System.out.println("Respuesta no valida, introduzca un valor valido");
+                                System.out.print("¿Desea eliminar este bungalo? (S/N): ");
+                                respuesta = MyInput.readString();
+                                siguiente = false;
+                            }
                         }
                     } while (!siguiente);
                 }

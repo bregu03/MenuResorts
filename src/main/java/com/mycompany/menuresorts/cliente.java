@@ -1,4 +1,3 @@
-
 package com.mycompany.menuresorts;
 
 /**
@@ -11,10 +10,10 @@ public class cliente {
     public static String numeroFiscal;
     public static int telefono;
     
-        public cliente(String nombre, String apellidos, String numeroFiscal, int telefono){
-            cliente.nombre=nombre;
-            cliente.apellidos=apellidos;
-            cliente.numeroFiscal=numeroFiscal;
-            cliente.telefono=telefono;
-        }
+    public cliente(String nombre, String apellidos, String numeroFiscal, int telefono){
+        cliente.nombre=nombre;
+        cliente.apellidos=apellidos;
+        cliente.numeroFiscal=numeroFiscal;
+        cliente.telefono=telefono;
+    }
 }

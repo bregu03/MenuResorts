@@ -50,30 +50,18 @@ public class MenuResorts {
             } else {
                 // Si la opción es válida, la ejecutamos
                 switch (opcion) {
-                    case 1:
-                        // Gestión de bungalós
+                    case 1 -> // Gestión de bungalós
                         MenuBungalos.menu_bungalos();
-                        break;
-                    case 2:
-                        // Gestión de clientes
+                    case 2 -> // Gestión de clientes
                         MenuClientes.menu_clientes();
-                        break;
-                    case 3:
-                        // Gestión de las actividades
+                    case 3 -> // Gestión de las actividades
                         MenuActividades.menu_actividades();
-                        break;
-                    case 4:
-                        // Gestión de reservas
+                    case 4 -> // Gestión de reservas
                         MenuReservas.menu_reservas();
-                        break;
-                    case 5:
-                        // Gestión de facturación
+                    case 5 -> // Gestión de facturación
                         MenuFacturacion.menu_facturacion();
-                        break;
-                    case 6:
-                        // Salvar datos
+                    case 6 -> // Salvar datos
                         MyInput.serialize(resort, "resort.dat");
-                        break;
                 }
             }
         } while (opcion != 0);

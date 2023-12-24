@@ -1,4 +1,3 @@
-
 package com.mycompany.menuresorts;
 
 import java.text.ParseException;
@@ -39,38 +38,21 @@ public class MenuReservas {
                     System.out.println("La opción no es válida.");
                 }
             } else if (opcion == 0){
+                //volver al main menuresorts
                 System.out.println("Regresando al menu principal");
             }else{ 
                 switch(opcion){
-                    case 1:
-                        crearReserva();
-                    break;
+                    case 1 -> crearReserva();
 
-                    case 2:
-                        eliminarReserva();
-                    break;
+                    case 2 -> eliminarReserva();
                     
-                    case 3:
-                        añadirActividad();
-                    break;
+                    case 3 -> añadirActividad();
                     
-                    case 4:
-                        eliminarActividad();
-                    break;
+                    case 4 -> eliminarActividad();
                     
-                    case 5:
-                        listarReservas();
-                    break;
+                    case 5 -> listarReservas();
                     
-                    case 6:
-                        mostrarReserva();
-                    break;
-                    
-                    case 0:
-                        //volver al main menuresorts
-                    break;
-                     
-                   
+                    case 6 -> mostrarReserva();
                 }
             }
         }while (opcion!=0);
@@ -85,20 +67,24 @@ public class MenuReservas {
         boolean adaptado, siguiente1;
         adaptado = true;
         do {
-            if ((respuesta1.equals("S")) || (respuesta1.equals("s"))){
-                // Si la respuesta es afirmativa, buscamos bungalos adaptados
-                adaptado = true;
-                siguiente1 = true;
-            } else if ((respuesta1.equals("N")) || (respuesta1.equals("n"))){
-                // Si la respuesta es negativa, buscamos bungalos no adaptados
-                adaptado = false;
-                siguiente1 = true;
-            } else{
-                // Si no se reconoce la respuesta, repetimos la pregunta
-                siguiente1 = false;
-                System.out.println("Respuesta no valida, introduzca un valor valido");
-                System.out.print("¿El bungalo tiene que ser adaptado? (S/N): ");
-                respuesta1 = MyInput.readString();
+            switch (respuesta1) {
+                case "S", "s" -> {
+                    // Si la respuesta es afirmativa, buscamos bungalos adaptados
+                    adaptado = true;
+                    siguiente1 = true;
+                }
+                case "N", "n" -> {
+                    // Si la respuesta es negativa, buscamos bungalos no adaptados
+                    adaptado = false;
+                    siguiente1 = true;
+                }
+                default -> {
+                    // Si no se reconoce la respuesta, repetimos la pregunta
+                    siguiente1 = false;
+                    System.out.println("Respuesta no valida, introduzca un valor valido");
+                    System.out.print("¿El bungalo tiene que ser adaptado? (S/N): ");
+                    respuesta1 = MyInput.readString();
+                }
             }
         } while (!siguiente1);
         
@@ -190,19 +176,23 @@ public class MenuReservas {
                 String respuesta = MyInput.readString();
                 boolean siguiente = false;
                 do {
-                    if ((respuesta.equals("S")) || (respuesta.equals("s"))){
-                        // Si la respuesta es afirmativa, seleccionamos cama articulada
-                        siguiente = true;
-                        cama = true;
-                    } else if ((respuesta.equals("N")) || (respuesta.equals("n"))){
-                        // Si la respuesta es negativa, no seleccionamos cama articulada
-                        siguiente = true;
-                        cama = false;
-                    } else{
-                        // Si no se reconoce la respuesta, repetimos la pregunta
-                        System.out.println("Respuesta no valida, introduzca un valor valido");
-                        System.out.print("¿Desea solicitar cama articulada? (S/N): ");
-                        respuesta = MyInput.readString();
+                    switch (respuesta) {
+                        case "S", "s" -> {
+                            // Si la respuesta es afirmativa, seleccionamos cama articulada
+                            siguiente = true;
+                            cama = true;
+                        }
+                        case "N", "n" -> {
+                            // Si la respuesta es negativa, no seleccionamos cama articulada
+                            siguiente = true;
+                            cama = false;
+                        }
+                        default -> {
+                            // Si no se reconoce la respuesta, repetimos la pregunta
+                            System.out.println("Respuesta no valida, introduzca un valor valido");
+                            System.out.print("¿Desea solicitar cama articulada? (S/N): ");
+                            respuesta = MyInput.readString();
+                        }
                     }
                 } while (!siguiente);
             }
@@ -213,19 +203,23 @@ public class MenuReservas {
                 String respuesta = MyInput.readString();
                 boolean siguiente = false;
                 do {
-                    if ((respuesta.equals("S")) || (respuesta.equals("s"))){
-                        // Si la respuesta es afirmativa, seleccionamos aseo asistido
-                        siguiente = true;
-                        aseo = true;
-                    } else if ((respuesta.equals("N")) || (respuesta.equals("n"))){
-                        // Si la respuesta es negativa, no seleccionamos aseo asistido
-                        siguiente = true;
-                        aseo = false;
-                    } else{
-                        // Si no se reconoce la respuesta, repetimos la pregunta
-                        System.out.println("Respuesta no valida, introduzca un valor valido");
-                        System.out.print("¿Desea solicitar aseo asistido? (S/N): ");
-                        respuesta = MyInput.readString();
+                    switch (respuesta) {
+                        case "S", "s" -> {
+                            // Si la respuesta es afirmativa, seleccionamos aseo asistido
+                            siguiente = true;
+                            aseo = true;
+                        }
+                        case "N", "n" -> {
+                            // Si la respuesta es negativa, no seleccionamos aseo asistido
+                            siguiente = true;
+                            aseo = false;
+                        }
+                        default -> {
+                            // Si no se reconoce la respuesta, repetimos la pregunta
+                            System.out.println("Respuesta no valida, introduzca un valor valido");
+                            System.out.print("¿Desea solicitar aseo asistido? (S/N): ");
+                            respuesta = MyInput.readString();
+                        }
                     }
                 } while (!siguiente);
             }
@@ -244,7 +238,7 @@ public class MenuReservas {
                 existeCliente = false;
 
                 for (int i = 0; i < resort.clientes.size(); i++) {
-                    if (resort.clientes.get(i).numeroFiscal == numeroFiscal) {
+                    if (resort.clientes.get(i).numeroFiscal.equals(numeroFiscal)) {
                         existeCliente = true;
                         numeroCliente = i;
                         break;
@@ -314,36 +308,37 @@ public class MenuReservas {
             String respuesta2 = MyInput.readString();
             boolean siguiente2;
             do {
-                if ((respuesta2.equals("S")) || (respuesta2.equals("s"))){
-                    // Si la respuesta es afirmativa, guardamos los datos
-                    reserva reserva = new reserva(idBungalo, id, nombre, apellidos, numeroFiscal, telefono, fechaInicio, fechaFin, personas);
-                    if (!existeCliente){
-                        cliente cliente = new cliente(nombre, apellidos, numeroFiscal, telefono);
-                        resort.clientes.add(cliente);
+                switch (respuesta2) {
+                    case "S", "s" -> {
+                        // Si la respuesta es afirmativa, guardamos los datos
+                        reserva reserva = new reserva(idBungalo, id, nombre, apellidos, numeroFiscal, telefono, fechaInicio, fechaFin, personas);
+                        if (!existeCliente){
+                            cliente cliente = new cliente(nombre, apellidos, numeroFiscal, telefono);
+                            resort.clientes.add(cliente);
+                        }   if (cama){
+                            AdaptadorReservaCama.añadirServicios(reserva.getServicios());
+                        }   if (aseo){
+                            AdaptadorReservaAseo.añadirServicios(reserva.getServicios());
+                        }   // Añadimos la reserva a la lista de reservas del resort
+                        resort.reservas.add(reserva);
+                        // Mostramos un mensaje de confirmación
+                        System.out.println("Los datos se han guardado correctamente.");
+                        System.out.println("Volviendo al menu...");
+                        siguiente2 = true;
                     }
-                    if (cama){
-                        AdaptadorReservaCama.añadirServicios(reserva.getServicios());
+                    case "N", "n" -> {
+                        // Si la respuesta es negativa, mostramos un mensage y volvemos al menu
+                        System.out.println("Los datos no han sido guardados.");
+                        System.out.println("Volviendo al menu...");
+                        siguiente2 = true;
                     }
-                    if (aseo){
-                        AdaptadorReservaAseo.añadirServicios(reserva.getServicios());
+                    default -> {
+                        // Si no se reconoce la respuesta, repetimos la pregunta
+                        System.out.println("Respuesta no valida, introduzca un valor valido");
+                        System.out.print("¿Son correctos estos datos? (S/N): ");
+                        respuesta2 = MyInput.readString();
+                        siguiente2 = false;
                     }
-                    // Añadimos la reserva a la lista de reservas del resort
-                    resort.reservas.add(reserva);
-                    // Mostramos un mensaje de confirmación
-                    System.out.println("Los datos se han guardado correctamente.");
-                    System.out.println("Volviendo al menu...");
-                    siguiente2 = true;
-                } else if ((respuesta2.equals("N")) || (respuesta2.equals("n"))){
-                    // Si la respuesta es negativa, mostramos un mensage y volvemos al menu
-                    System.out.println("Los datos no han sido guardados.");
-                    System.out.println("Volviendo al menu...");
-                    siguiente2 = true;
-                } else{
-                    // Si no se reconoce la respuesta, repetimos la pregunta
-                    System.out.println("Respuesta no valida, introduzca un valor valido");
-                    System.out.print("¿Son correctos estos datos? (S/N): ");
-                    respuesta2 = MyInput.readString();
-                    siguiente2 = false;
                 }
             } while (!siguiente2);
         }else if (!disponible){
@@ -405,23 +400,27 @@ public class MenuReservas {
                     String respuesta = MyInput.readString();
                     boolean siguiente;
                     do {
-                        if ((respuesta.equals("S")) || (respuesta.equals("s"))){
-                            // Si la respuesta es afirmativa, eliminamos la reserva del array
-                            resort.reservas.remove(reservaEliminar);
-                            System.out.println("La reserva con id " + idReserva + " ha sido eliminado correctamente.");
-                            System.out.println("Volviendo al menu...");
-                            siguiente = true;
-                        } else if ((respuesta.equals("N")) || (respuesta.equals("n"))){
-                            // Si la respuesta es negativa, mostramos un mensage y volvemos al menu
-                            System.out.println("Los datos no han sido borrados.");
-                            System.out.println("Volviendo al menu...");
-                            siguiente = true;
-                        } else{
-                            // Si no se reconoce la respuesta, repetimos la pregunta
-                            System.out.println("Respuesta no valida, introduzca un valor valido");
-                            System.out.print("¿Desea eliminar esta reserva? (S/N): ");
-                            respuesta = MyInput.readString();
-                            siguiente = false;
+                        switch (respuesta) {
+                            case "S", "s" -> {
+                                // Si la respuesta es afirmativa, eliminamos la reserva del array
+                                resort.reservas.remove(reservaEliminar);
+                                System.out.println("La reserva con id " + idReserva + " ha sido eliminado correctamente.");
+                                System.out.println("Volviendo al menu...");
+                                siguiente = true;
+                            }
+                            case "N", "n" -> {
+                                // Si la respuesta es negativa, mostramos un mensage y volvemos al menu
+                                System.out.println("Los datos no han sido borrados.");
+                                System.out.println("Volviendo al menu...");
+                                siguiente = true;
+                            }
+                            default -> {
+                                // Si no se reconoce la respuesta, repetimos la pregunta
+                                System.out.println("Respuesta no valida, introduzca un valor valido");
+                                System.out.print("¿Desea eliminar esta reserva? (S/N): ");
+                                respuesta = MyInput.readString();
+                                siguiente = false;
+                            }
                         }
                     } while (!siguiente);
                 }
@@ -554,24 +553,28 @@ public class MenuReservas {
                         String respuesta = MyInput.readString();
                         boolean siguiente;
                         do {
-                            if ((respuesta.equals("S")) || (respuesta.equals("s"))){
-                                // Si la respuesta es afirmativa, guardamos la actividad reservada
-                                actividadReservada actividadReservada = new actividadReservada(idActividad, personas, fechaInicio, fechaFin);
-                                resort.reservas.get(reservaAñadir).actividadesReservadas.add(actividadReservada);
-                                System.out.println("Operación realizada satisfactoriamente");
-                                System.out.println("Volviendo al menu...");
-                                siguiente = true;
-                            } else if ((respuesta.equals("N")) || (respuesta.equals("n"))){
-                                // Si la respuesta es negativa, mostramos un mensage y volvemos al menu
-                                System.out.println("Los datos no han sido añadidos.");
-                                System.out.println("Volviendo al menu...");
-                                siguiente = true;
-                            } else{
-                                // Si no se reconoce la respuesta, repetimos la pregunta
-                                System.out.println("Respuesta no valida, introduzca un valor valido");
-                                System.out.print("¿Desea eliminar esta reserva? (S/N): ");
-                                respuesta = MyInput.readString();
-                                siguiente = false;
+                            switch (respuesta) {
+                                case "S", "s" -> {
+                                    // Si la respuesta es afirmativa, guardamos la actividad reservada
+                                    actividadReservada actividadReservada = new actividadReservada(idActividad, personas, fechaInicio, fechaFin);
+                                    resort.reservas.get(reservaAñadir).actividadesReservadas.add(actividadReservada);
+                                    System.out.println("Operación realizada satisfactoriamente");
+                                    System.out.println("Volviendo al menu...");
+                                    siguiente = true;
+                                }
+                                case "N", "n" -> {
+                                    // Si la respuesta es negativa, mostramos un mensage y volvemos al menu
+                                    System.out.println("Los datos no han sido añadidos.");
+                                    System.out.println("Volviendo al menu...");
+                                    siguiente = true;
+                                }
+                                default -> {
+                                    // Si no se reconoce la respuesta, repetimos la pregunta
+                                    System.out.println("Respuesta no valida, introduzca un valor valido");
+                                    System.out.print("¿Desea eliminar esta reserva? (S/N): ");
+                                    respuesta = MyInput.readString();
+                                    siguiente = false;
+                                }
                             }
                         } while (!siguiente);
                     }
@@ -645,23 +648,27 @@ public class MenuReservas {
                             String respuesta = MyInput.readString();
                             boolean siguiente;
                             do {
-                                if ((respuesta.equals("S")) || (respuesta.equals("s"))){
-                                    // Si la respuesta es afirmativa, eliminamos la reserva del array
-                                    resort.reservas.get(reservaEliminar).actividadesReservadas.remove(actividadEliminar);
-                                    System.out.println("La actividad reservada con id " + idActividad + " ha sido eliminada correctamente.");
-                                    System.out.println("Volviendo al menu...");
-                                    siguiente = true;
-                                } else if ((respuesta.equals("N")) || (respuesta.equals("n"))){
-                                    // Si la respuesta es negativa, mostramos un mensage y volvemos al menu
-                                    System.out.println("Los datos no han sido borrados.");
-                                    System.out.println("Volviendo al menu...");
-                                    siguiente = true;
-                                } else{
-                                    // Si no se reconoce la respuesta, repetimos la pregunta
-                                    System.out.println("Respuesta no valida, introduzca un valor valido");
-                                    System.out.print("¿Desea eliminar esta reserva? (S/N): ");
-                                    respuesta = MyInput.readString();
-                                    siguiente = false;
+                                switch (respuesta) {
+                                    case "S", "s" -> {
+                                        // Si la respuesta es afirmativa, eliminamos la reserva del array
+                                        resort.reservas.get(reservaEliminar).actividadesReservadas.remove(actividadEliminar);
+                                        System.out.println("La actividad reservada con id " + idActividad + " ha sido eliminada correctamente.");
+                                        System.out.println("Volviendo al menu...");
+                                        siguiente = true;
+                                    }
+                                    case "N", "n" -> {
+                                        // Si la respuesta es negativa, mostramos un mensage y volvemos al menu
+                                        System.out.println("Los datos no han sido borrados.");
+                                        System.out.println("Volviendo al menu...");
+                                        siguiente = true;
+                                    }
+                                    default -> {
+                                        // Si no se reconoce la respuesta, repetimos la pregunta
+                                        System.out.println("Respuesta no valida, introduzca un valor valido");
+                                        System.out.print("¿Desea eliminar esta reserva? (S/N): ");
+                                        respuesta = MyInput.readString();
+                                        siguiente = false;
+                                    }
                                 }
                             } while (!siguiente);
                         }

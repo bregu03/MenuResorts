@@ -33,26 +33,15 @@ public class MenuActividades {
                     System.out.println("La opción no es válida.");
                 }
             } else if (opcion == 0){
+                //volver al main menuresorts
                 System.out.println("Regresando al menu principal");
             }else{    
                 switch(opcion){
-                    case 1:
-                        añadirActividad();
-                    break;
+                    case 1 -> añadirActividad();
                     
-                    case 2:
-                        listarActividades();
-                    break;
+                    case 2 -> listarActividades();
                     
-                    case 3:
-                        mostrarActividad();
-                    break;
-     
-                    case 0:
-                        //volver al main menuresorts
-                    break;
-                     
-                   
+                    case 3 -> mostrarActividad(); 
                 }
             }
         }while (opcion !=0);
@@ -98,26 +87,30 @@ public class MenuActividades {
         String respuesta = MyInput.readString();
         boolean siguiente;
         do {
-            if ((respuesta.equals("S")) || (respuesta.equals("s"))){
-                // Si la respuesta es afirmativa, guardamos los datos
-                actividad actividad = new actividad(id, descripcion, precio);
-                // Añadimos la actividad a la lista de actividades del resort
-                resort.actividades.add(actividad);
-                // Mostramos un mensaje de confirmación
-                System.out.println("Los datos se han guardado correctamente.");
-                System.out.println("Volviendo al menu...");
-                siguiente = true;
-            } else if ((respuesta.equals("N")) || (respuesta.equals("n"))){
-                // Si la respuesta es negativa, mostramos un mensage y volvemos al menu
-                System.out.println("Los datos no han sido guardados.");
-                System.out.println("Volviendo al menu...");
-                siguiente = true;
-            } else{
-                // Si no se reconoce la respuesta, repetimos la pregunta
-                System.out.println("Respuesta no valida, introduzca un valor valido");
-                System.out.print("¿Son correctos estos datos? (S/N): ");
-                respuesta = MyInput.readString();
-                siguiente = false;
+            switch (respuesta) {
+                case "S", "s" -> {
+                    // Si la respuesta es afirmativa, guardamos los datos
+                    actividad actividad = new actividad(id, descripcion, precio);
+                    // Añadimos la actividad a la lista de actividades del resort
+                    resort.actividades.add(actividad);
+                    // Mostramos un mensaje de confirmación
+                    System.out.println("Los datos se han guardado correctamente.");
+                    System.out.println("Volviendo al menu...");
+                    siguiente = true;
+                }
+                case "N", "n" -> {
+                    // Si la respuesta es negativa, mostramos un mensage y volvemos al menu
+                    System.out.println("Los datos no han sido guardados.");
+                    System.out.println("Volviendo al menu...");
+                    siguiente = true;
+                }
+                default -> {
+                    // Si no se reconoce la respuesta, repetimos la pregunta
+                    System.out.println("Respuesta no valida, introduzca un valor valido");
+                    System.out.print("¿Son correctos estos datos? (S/N): ");
+                    respuesta = MyInput.readString();
+                    siguiente = false;
+                }
             }
         } while (!siguiente);
     }

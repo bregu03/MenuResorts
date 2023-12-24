@@ -1,14 +1,12 @@
-
 package com.mycompany.menuresorts;
+
+import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
  * @author avbre
  */
-
-import java.util.ArrayList;
-import java.util.Date;
-
 public class reserva {
     public static int idBungalo;
     public static int id;
@@ -22,19 +20,19 @@ public class reserva {
     public static String servicios;
     static ArrayList<actividadReservada> actividadesReservadas;
     
-        public reserva(int idBungalo, int id, String nombre, String apellidos, String numeroFiscal, int telefono, Date fechaInicio, Date fechaFin, int personas){
-            reserva.idBungalo=idBungalo;
-            reserva.id=id;
-            reserva.nombre=nombre;
-            reserva.apellidos=apellidos;
-            reserva.numeroFiscal=numeroFiscal;
-            reserva.telefono=telefono;
-            reserva.fechaInicio=fechaInicio;
-            reserva.fechaFin=fechaFin;
-            reserva.personas=personas;
-            reserva.servicios=null;
-            reserva.actividadesReservadas = new ArrayList<>();
-        }
+    public reserva(int idBungalo, int id, String nombre, String apellidos, String numeroFiscal, int telefono, Date fechaInicio, Date fechaFin, int personas){
+        reserva.idBungalo=idBungalo;
+        reserva.id=id;
+        reserva.nombre=nombre;
+        reserva.apellidos=apellidos;
+        reserva.numeroFiscal=numeroFiscal;
+        reserva.telefono=telefono;
+        reserva.fechaInicio=fechaInicio;
+        reserva.fechaFin=fechaFin;
+        reserva.personas=personas;
+        reserva.servicios=null;
+        reserva.actividadesReservadas = new ArrayList<>();
+    }
         
     public static void setServicios(String servicios) {
         reserva.servicios = servicios;

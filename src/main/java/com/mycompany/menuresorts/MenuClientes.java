@@ -1,4 +1,3 @@
-
 package com.mycompany.menuresorts;
 
 /**
@@ -33,26 +32,15 @@ public class MenuClientes {
                     System.out.println("La opción no es válida.");
                 }
             } else if (opcion == 0){
+                //volver al main menuresorts
                 System.out.println("Regresando al menu principal");
             }else{ 
                 switch(opcion){
-                    case 1:
-                        añadirCliente();
-                    break;
+                    case 1 -> añadirCliente();
                     
-                    case 2:
-                        listarClientes();
-                    break;
+                    case 2 -> listarClientes();
                     
-                    case 3:
-                        mostrarCliente();
-                    break;
-                    
-                    case 0:
-                        //volver al main menuresorts
-                    break;
-                     
-                   
+                    case 3 -> mostrarCliente();
                 }
             }
         }while (opcion!=0);
@@ -93,25 +81,29 @@ public class MenuClientes {
                     String respuesta1 = MyInput.readString();
                     boolean siguiente1;
                     do {
-                        if ((respuesta1.equals("S")) || (respuesta1.equals("s"))){
-                            // Si la respuesta es afirmativa, continuamos con el registro
-                            System.out.print("Por favor, introduzca otro DNI/NIF: ");
-                            numeroFiscal = MyInput.readString();
-                            continuar = true;
-                            siguiente1 = true;
-                        } else if ((respuesta1.equals("N")) || (respuesta1.equals("n"))){
-                            // Si la respuesta es negativa, mostramos un mensage y volvemos al menu
-                            System.out.println("Se ha abortado el prodeso de registro.");
-                            System.out.println("Volviendo al menu...");
-                            existeCliente = false;
-                            continuar = false;
-                            siguiente1 = true;
-                        } else{
-                            // Si no se reconoce la respuesta, repetimos la pregunta
-                            System.out.println("Respuesta no valida, introduzca un valor valido");
-                            System.out.print("¿Desea continuar con el registro e introducir otro DNI/NIF? (S/N): ");
-                            respuesta1 = MyInput.readString();
-                            siguiente1 = false;
+                        switch (respuesta1) {
+                            case "S", "s" -> {
+                                // Si la respuesta es afirmativa, continuamos con el registro
+                                System.out.print("Por favor, introduzca otro DNI/NIF: ");
+                                numeroFiscal = MyInput.readString();
+                                continuar = true;
+                                siguiente1 = true;
+                            }
+                            case "N", "n" -> {
+                                // Si la respuesta es negativa, mostramos un mensage y volvemos al menu
+                                System.out.println("Se ha abortado el prodeso de registro.");
+                                System.out.println("Volviendo al menu...");
+                                existeCliente = false;
+                                continuar = false;
+                                siguiente1 = true;
+                            }
+                            default -> {
+                                // Si no se reconoce la respuesta, repetimos la pregunta
+                                System.out.println("Respuesta no valida, introduzca un valor valido");
+                                System.out.print("¿Desea continuar con el registro e introducir otro DNI/NIF? (S/N): ");
+                                respuesta1 = MyInput.readString();
+                                siguiente1 = false;
+                            }
                         }
                     } while (!siguiente1);
                 }
@@ -128,26 +120,30 @@ public class MenuClientes {
             String respuesta2 = MyInput.readString();
             boolean siguiente2;
             do {
-                if ((respuesta2.equals("S")) || (respuesta2.equals("s"))){
-                    // Si la respuesta es afirmativa, guardamos los datos
-                    cliente cliente = new cliente(nombre, apellidos, numeroFiscal, telefono);
-                    // Añadimos el cliente a la lista de clientes del resort
-                    resort.clientes.add(cliente);
-                    // Mostramos un mensaje de confirmación
-                    System.out.println("Los datos se han guardado correctamente.");
-                    System.out.println("Volviendo al menu...");
-                    siguiente2 = true;
-                } else if ((respuesta2.equals("N")) || (respuesta2.equals("n"))){
-                    // Si la respuesta es negativa, mostramos un mensage y volvemos al menu
-                    System.out.println("Los datos no han sido guardados.");
-                    System.out.println("Volviendo al menu...");
-                    siguiente2 = true;
-                } else{
-                    // Si no se reconoce la respuesta, repetimos la pregunta
-                    System.out.println("Respuesta no valida, introduzca un valor valido");
-                    System.out.print("¿Son correctos estos datos? (S/N): ");
-                    respuesta2 = MyInput.readString();
-                    siguiente2 = false;
+                switch (respuesta2) {
+                    case "S", "s" -> {
+                        // Si la respuesta es afirmativa, guardamos los datos
+                        cliente cliente = new cliente(nombre, apellidos, numeroFiscal, telefono);
+                        // Añadimos el cliente a la lista de clientes del resort
+                        resort.clientes.add(cliente);
+                        // Mostramos un mensaje de confirmación
+                        System.out.println("Los datos se han guardado correctamente.");
+                        System.out.println("Volviendo al menu...");
+                        siguiente2 = true;
+                    }
+                    case "N", "n" -> {
+                        // Si la respuesta es negativa, mostramos un mensage y volvemos al menu
+                        System.out.println("Los datos no han sido guardados.");
+                        System.out.println("Volviendo al menu...");
+                        siguiente2 = true;
+                    }
+                    default -> {
+                        // Si no se reconoce la respuesta, repetimos la pregunta
+                        System.out.println("Respuesta no valida, introduzca un valor valido");
+                        System.out.print("¿Son correctos estos datos? (S/N): ");
+                        respuesta2 = MyInput.readString();
+                        siguiente2 = false;
+                    }
                 }
             } while (!siguiente2);
         }
