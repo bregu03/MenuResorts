@@ -5,6 +5,7 @@ import java.io.Serializable;
 /**
  * Clase encargada de almacenar las actividades
  * @author Alejandro
+ * 
  */
 public class Actividad implements Serializable {
 
