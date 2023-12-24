@@ -18,21 +18,36 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class MyInputTest {
     
+    /**
+     *
+     */
     public MyInputTest() {
     }
     
+    /**
+     *
+     */
     @BeforeAll
     public static void setUpClass() {
     }
     
+    /**
+     *
+     */
     @AfterAll
     public static void tearDownClass() {
     }
     
+    /**
+     *
+     */
     @BeforeEach
     public void setUp() {
     }
     
+    /**
+     *
+     */
     @AfterEach
     public void tearDown() {
     }
@@ -117,6 +132,7 @@ public class MyInputTest {
 
     /**
      * Test of readDate method, of class MyInput.
+     * @throws java.lang.Exception
      */
     @Test
     public void testReadDate() throws Exception {

@@ -8,11 +8,35 @@ import java.util.Date;
  * @author avbre
  */
 public class ActividadReservada implements Serializable {
+
+    /**
+     * Variable del identificador de la actividad reservada
+     */
     public int IDActividad;
+
+    /**
+     * Variable del numero de personas que tomaran parte en la actividad
+     */
     public int Personas;
+
+    /**
+     * Variable de la fecha de inicio de la actividad
+     */
     public Date FechaInicio;
+
+    /**
+     * Variable de la fecha de finalizacion de la actividad
+     */
     public Date FechaFin;
+
+    /**
+     * Variable de la descripcion de la actividad reservada
+     */
     public String Descripcion;
+
+    /**
+     * Variable del precio de la actividad
+     */
     public int Precio;
     
     /**

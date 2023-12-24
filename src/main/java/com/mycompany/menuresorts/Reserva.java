@@ -9,15 +9,37 @@ import java.util.Date;
  * @author avbre
  */
 public class Reserva implements Serializable {
+
+    /**
+     * Variable del identificador del bungalo
+     */
     public int IDBungalo;
+
+    /**
+     * Variable del identificador de la reserva
+     */
     public int ID;
-    public String Nombre;
-    public String Apellidos;
-    public String NumeroFiscal;
-    public int Telefono;
+
+    Cliente Cliente;
+
+    /**
+     * Variable de la fecha de inicio de la reserva
+     */
     public Date FechaInicio;
+
+    /**
+     * Variable de la fecha de finalización de la reserva
+     */
     public Date FechaFin;
+
+    /**
+     * Variable del numero de personas
+     */
     public int Personas;
+
+    /**
+     * Variable de los servicios especiales del bungalo
+     */
     public String Servicios;
     ArrayList<ActividadReservada> ActividadesReservadas;
     
@@ -36,10 +58,7 @@ public class Reserva implements Serializable {
     public Reserva(int IDBungalo, int ID, String Nombre, String Apellidos, String NumeroFiscal, int Telefono, Date FechaInicio, Date FechaFin, int Personas){
         this.IDBungalo=IDBungalo;
         this.ID=ID;
-        this.Nombre=Nombre;
-        this.Apellidos=Apellidos;
-        this.NumeroFiscal=NumeroFiscal;
-        this.Telefono=Telefono;
+        this.Cliente = new Cliente(Nombre, Apellidos, NumeroFiscal, Telefono);
         this.FechaInicio=FechaInicio;
         this.FechaFin=FechaFin;
         this.Personas=Personas;

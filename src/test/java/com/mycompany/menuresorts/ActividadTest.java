@@ -17,25 +17,43 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class ActividadTest {
     
+    /**
+     *
+     */
     public ActividadTest() {
     }
     
+    /**
+     *
+     */
     @BeforeAll
     public static void setUpClass() {
     }
     
+    /**
+     *
+     */
     @AfterAll
     public static void tearDownClass() {
     }
     
+    /**
+     *
+     */
     @BeforeEach
     public void setUp() {
     }
     
+    /**
+     *
+     */
     @AfterEach
     public void tearDown() {
     }
 
+    /**
+     *
+     */
     @Test
     public void testSomeMethod() {
         // TODO review the generated test code and remove the default call to fail.

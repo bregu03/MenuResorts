@@ -7,9 +7,25 @@ import java.io.Serializable;
  * @author avbre
  */
 public class Cliente implements Serializable {
+
+    /**
+     * Variable del nombre del cliente
+     */
     public String Nombre;
+
+    /**
+     * Variable de los apellidos del cliente
+     */
     public String Apellidos;
+
+    /**
+     * Variable del DNI/NIF del cliente
+     */
     public String NumeroFiscal;
+
+    /**
+     * Variable del numero de telefono del cliente
+     */
     public int Telefono;
     
     /**

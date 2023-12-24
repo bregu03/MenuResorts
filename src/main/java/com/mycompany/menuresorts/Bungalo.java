@@ -7,10 +7,30 @@ import java.io.Serializable;
  * @author avbre
  */
 public class Bungalo implements Serializable {
+
+    /**
+     * Variable de la capacidad del bungalo
+     */
     public int Capacidad;
+
+    /**
+     * Variable del nombre del bungalo
+     */
     public String Nombre;
+
+    /**
+     * Variable del precio del bungalo
+     */
     public int Precio;
+
+    /**
+     * Variable que define si un bungalo es adaptado o no
+     */
     public boolean Adaptado;
+
+    /**
+     * Variable del identificador del bungalo
+     */
     public int ID;
     
     /**

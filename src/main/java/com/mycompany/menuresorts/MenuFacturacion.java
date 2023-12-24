@@ -53,14 +53,27 @@ public class MenuFacturacion {
         return ResortActual;
     }
     
+    /**
+     * Metodo encargado de crear las facturas y almacenarlas en el sistema
+     * @param ResortActual
+     * @return
+     */
     public Resort generarFactura(Resort ResortActual){
         return ResortActual;
     }
     
+    /**
+     * Metodo encargado de mostrar las facturas de un cliente en concreto
+     * @param ResortActual
+     */
     public void facturasCliente(Resort ResortActual){
         
     }
     
+    /**
+     * Metodo encargado de mostrar una factura en concreto
+     * @param ResortActual
+     */
     public void mostarFactura(Resort ResortActual){
         
     }

@@ -7,8 +7,20 @@ import java.io.Serializable;
  * @author Alejandro
  */
 public class Actividad implements Serializable {
+
+    /**
+     * Variable del identificador de la actividad
+     */
     public int ID;
+
+    /**
+     * Variable de la descripcion de la actividad
+     */
     public String Descripcion;
+
+    /**
+     * Variable del precio de la actividad
+     */
     public int Precio;
     
     /**

@@ -12,27 +12,47 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class MenuResortsTest {
     
+    /**
+     *
+     */
     public MenuResortsTest() {
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     @org.junit.jupiter.api.BeforeAll
     public static void setUpClass() throws Exception {
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     @org.junit.jupiter.api.AfterAll
     public static void tearDownClass() throws Exception {
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     @org.junit.jupiter.api.BeforeEach
     public void setUp() throws Exception {
     }
 
+    /**
+     *
+     * @throws Exception
+     */
     @org.junit.jupiter.api.AfterEach
     public void tearDown() throws Exception {
     }
 
     /**
      * Test of main method, of class MenuResorts.
+     * @throws java.lang.Exception
      */
     @org.junit.jupiter.api.Test
     public void testMain() throws Exception {

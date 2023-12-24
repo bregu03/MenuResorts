@@ -17,21 +17,36 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class AdaptadorReservaTest {
     
+    /**
+     *
+     */
     public AdaptadorReservaTest() {
     }
     
+    /**
+     *
+     */
     @BeforeAll
     public static void setUpClass() {
     }
     
+    /**
+     *
+     */
     @AfterAll
     public static void tearDownClass() {
     }
     
+    /**
+     *
+     */
     @BeforeEach
     public void setUp() {
     }
     
+    /**
+     *
+     */
     @AfterEach
     public void tearDown() {
     }
@@ -49,8 +64,14 @@ public class AdaptadorReservaTest {
         fail("The test case is a prototype.");
     }
 
+    /**
+     *
+     */
     public class AdaptadorReservaImpl extends AdaptadorReserva {
 
+        /**
+         *
+         */
         public AdaptadorReservaImpl() {
             super(null);
         }

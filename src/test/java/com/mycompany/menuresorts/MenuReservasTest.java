@@ -17,27 +17,43 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class MenuReservasTest {
     
+    /**
+     *
+     */
     public MenuReservasTest() {
     }
     
+    /**
+     *
+     */
     @BeforeAll
     public static void setUpClass() {
     }
     
+    /**
+     *
+     */
     @AfterAll
     public static void tearDownClass() {
     }
     
+    /**
+     *
+     */
     @BeforeEach
     public void setUp() {
     }
     
+    /**
+     *
+     */
     @AfterEach
     public void tearDown() {
     }
 
     /**
      * Test of menu_reservas method, of class MenuReservas.
+     * @throws java.lang.Exception
      */
     @Test
     public void testMenu_reservas() throws Exception {
@@ -53,6 +69,7 @@ public class MenuReservasTest {
 
     /**
      * Test of crearReserva method, of class MenuReservas.
+     * @throws java.lang.Exception
      */
     @Test
     public void testCrearReserva() throws Exception {
@@ -83,6 +100,7 @@ public class MenuReservasTest {
 
     /**
      * Test of añadirActividad method, of class MenuReservas.
+     * @throws java.lang.Exception
      */
     @Test
     public void testAñadirActividad() throws Exception {
