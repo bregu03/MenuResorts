@@ -63,6 +63,7 @@ public class Reserva implements Serializable {
         this.FechaFin=FechaFin;
         this.Personas=Personas;
         this.ActividadesReservadas = new ArrayList<>();
+        this.Servicios = "| ";
     }
         
     /**

@@ -245,7 +245,7 @@ public class MenuReservas {
             String nombre = null;
             String apellidos = null;
             int telefono = 0;
-            if (!ResortActual.Reservas.isEmpty()){
+            if (!ResortActual.Clientes.isEmpty()){
                 // Bucle para comprobar si el DNI/NIF ya existe
                 int numeroCliente = 0;
                 // Comprobamos si el DNI/NIF ya existe
@@ -277,7 +277,7 @@ public class MenuReservas {
                     System.out.print("Ingrese el telefono del cliente: ");
                     telefono = MyInput.readInt();
                 }
-            } else if (ResortActual.Reservas.isEmpty()){
+            } else if (ResortActual.Clientes.isEmpty()){
                 // Solicitamos el nombre del cliente
                 existeCliente = false;
                 System.out.print("Ingrese el nombre del cliente: ");
@@ -329,10 +329,10 @@ public class MenuReservas {
                         if (!existeCliente){
                             Cliente cliente = new Cliente(nombre, apellidos, numeroFiscal, telefono);
                             ResortActual.Clientes.add(cliente);
-                        }   if (cama){
+                        } if (cama){
                             AdaptadorReservaCama ReservaCama = new AdaptadorReservaCama(reserva);
                             ReservaCama.añadirServicios(reserva.getServicios());
-                        }   if (aseo){
+                        } if (aseo){
                             AdaptadorReservaAseo ReservaAseo = new AdaptadorReservaAseo(reserva);
                             ReservaAseo.añadirServicios(reserva.getServicios());
                         }   // Añadimos la reserva a la lista de reservas del resort
