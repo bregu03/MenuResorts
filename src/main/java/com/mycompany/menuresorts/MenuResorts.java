@@ -94,8 +94,11 @@ public class MenuResorts {
                         MenuFacturacion menuFacturacion = new MenuFacturacion();
                         ResortActual = menuFacturacion.menu_facturacion(ResortActual);
                     }
-                    case 6 -> // Salvar datos
+                    case 6 -> {
+                        // Salvar datos
                         MyInput.serialize(ResortActual, "resort.dat");
+                        System.out.println("Datos guardados satisfactoriamente");
+                    }
                 }
             }
         } while (opcion != 0);

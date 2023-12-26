@@ -121,20 +121,28 @@ public class MenuReservas {
             System.out.println("");
             System.out.println("BUNGALOS DISPONIBLES");
             for (int i = 0; i < ResortActual.Bungalos.size(); i++) {
-                if (ResortActual.Bungalos.get(i).Adaptado == adaptado && ResortActual.Bungalos.get(i).Capacidad == personas) {
+                if (ResortActual.Bungalos.get(i).Adaptado == adaptado && ResortActual.Bungalos.get(i).Capacidad >= personas) {
                     if (!ResortActual.Reservas.isEmpty()){
                         for (int n = 0; n < ResortActual.Reservas.size(); n++) {
                             if (ResortActual.Bungalos.get(i).ID == ResortActual.Reservas.get(n).IDBungalo){
                                 if (fechaFin.before(ResortActual.Reservas.get(n).FechaInicio) || fechaInicio.after(ResortActual.Reservas.get(n).FechaFin)) {
                                     // Bloque de código a ejecutar si los intervalos no se solapan
                                     System.out.println("");
-                                    System.out.println("ID: " + ResortActual.Bungalos.get(n).ID);
-                                    System.out.println("Capacidad: " + ResortActual.Bungalos.get(n).Capacidad);
-                                    System.out.println("Nombre: " + ResortActual.Bungalos.get(n).Nombre);
-                                    System.out.println("Precio: " + ResortActual.Bungalos.get(n).Precio);
-                                    System.out.println("Adaptado: " + ResortActual.Bungalos.get(n).Adaptado);
+                                    System.out.println("ID: " + ResortActual.Bungalos.get(i).ID);
+                                    System.out.println("Capacidad: " + ResortActual.Bungalos.get(i).Capacidad);
+                                    System.out.println("Nombre: " + ResortActual.Bungalos.get(i).Nombre);
+                                    System.out.println("Precio: " + ResortActual.Bungalos.get(i).Precio);
+                                    System.out.println("Adaptado: " + ResortActual.Bungalos.get(i).Adaptado);
                                     disponible = true;
                                 }
+                            } else if (ResortActual.Bungalos.get(i).ID != ResortActual.Reservas.get(n).IDBungalo) {
+                                System.out.println("");
+                                System.out.println("ID: " + ResortActual.Bungalos.get(i).ID);
+                                System.out.println("Capacidad: " + ResortActual.Bungalos.get(i).Capacidad);
+                                System.out.println("Nombre: " + ResortActual.Bungalos.get(i).Nombre);
+                                System.out.println("Precio: " + ResortActual.Bungalos.get(i).Precio);
+                                System.out.println("Adaptado: " + ResortActual.Bungalos.get(i).Adaptado);
+                                disponible = true;
                             }
                         }
                     } else if (ResortActual.Reservas.isEmpty()){
@@ -160,14 +168,17 @@ public class MenuReservas {
                 disponibleId = false;
 
                 for (int i = 0; i < ResortActual.Bungalos.size(); i++) {
-                    if (ResortActual.Bungalos.get(i).ID == idBungalo && ResortActual.Bungalos.get(i).Adaptado == adaptado && ResortActual.Bungalos.get(i).Capacidad == personas) {
+                    if (ResortActual.Bungalos.get(i).Adaptado == adaptado && ResortActual.Bungalos.get(i).Capacidad >= personas) {
                         if (!ResortActual.Reservas.isEmpty()){
                             for (int n = 0; n < ResortActual.Reservas.size(); n++) {
                                 if (ResortActual.Bungalos.get(i).ID == ResortActual.Reservas.get(n).IDBungalo){
-                                    if (fechaFin.before(ResortActual.Reservas.get(n).FechaInicio) && fechaInicio.after(ResortActual.Reservas.get(n).FechaFin)) {
+                                    if (fechaFin.before(ResortActual.Reservas.get(n).FechaInicio) || fechaInicio.after(ResortActual.Reservas.get(n).FechaFin)) {
                                         disponibleId = true;
                                         break;
                                     }
+                                } else if (ResortActual.Bungalos.get(i).ID != ResortActual.Reservas.get(n).IDBungalo) {
+                                    disponibleId = true;
+                                    break;
                                 }
                             }
                         } else if (ResortActual.Reservas.isEmpty()){
@@ -405,7 +416,7 @@ public class MenuReservas {
 
                 // Si la reserva esta en uso, mostramos un mensaje de error
                 if (enEjecucion) {
-                    System.out.println("La reservao con id " + idReserva + " está en ejecución. No se puede eliminar.");
+                    System.out.println("La reserva con id " + idReserva + " está en ejecución. No se puede eliminar.");
                     System.out.println("Volviendo al menu...");
                 } else if (!enEjecucion) {
                     // Imprime los datos de la reserva
@@ -500,7 +511,7 @@ public class MenuReservas {
                     boolean existeActividad = false;
                     int actividadAñadir = 0;
                     for (int i = 0; i < ResortActual.Reservas.size(); i++) {
-                        if (ResortActual.Reservas.get(i).ID == idReserva) {
+                        if (ResortActual.Reservas.get(i).ID == idActividad) {
                             existeActividad = true;
                             actividadAñadir = i;
                             break;
@@ -675,10 +686,10 @@ public class MenuReservas {
                     } else if (existeActividad){
                         Date fechaActual = new Date();
                         // Si la actividad esta en uso, mostramos un mensaje de error
-                        if (ResortActual.Reservas.get(reservaEliminar).ActividadesReservadas.get(actividadEliminar).FechaInicio.after(fechaActual)) {
-                            System.out.println("La actividad con id " + idActividad + " está en ejecución. No se puede eliminar.");
+                        if (ResortActual.Reservas.get(reservaEliminar).ActividadesReservadas.get(actividadEliminar).FechaInicio.before(fechaActual)) {
+                            System.out.println("La actividad con id " + idActividad + " está en ejecución o se ha ejecutado. No se puede eliminar.");
                             System.out.println("Volviendo al menu...");
-                        } else if (!ResortActual.Reservas.get(reservaEliminar).ActividadesReservadas.get(actividadEliminar).FechaInicio.after(fechaActual)) {
+                        } else if (!ResortActual.Reservas.get(reservaEliminar).ActividadesReservadas.get(actividadEliminar).FechaInicio.before(fechaActual)) {
                             // Imprime los datos de la actividad reservada
                             System.out.println("");
                             System.out.println("ID Actividad: " + ResortActual.Reservas.get(reservaEliminar).ActividadesReservadas.get(actividadEliminar).IDActividad);

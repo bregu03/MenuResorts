@@ -91,7 +91,7 @@ public class MenuActividades {
         String descripcion = MyInput.readString();
 
         // Solicitamos el precio de la actividad por persona y dia
-        System.out.print("Ingrese el precio de la actividad por persona y dia: ");
+        System.out.print("Ingrese el precio de la actividad por persona y dia (en caso de ser del restaurante, ingrese el coste total): ");
         int precio = MyInput.readInt();
 
         // Solicitamos confirmación para guardar los datos

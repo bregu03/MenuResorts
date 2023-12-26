@@ -197,8 +197,10 @@ public class MenuBungalos {
             } else if (existeBungalo){
                 // Comprobamos si el bungalo está reservado
                 boolean estaReservado = false;
-                if (ResortActual.Reservas.get(bungaloEliminar).IDBungalo == idBungalo) {
-                    estaReservado = true;
+                if (!ResortActual.Reservas.isEmpty()){
+                    if (ResortActual.Reservas.get(bungaloEliminar).IDBungalo == idBungalo) {
+                        estaReservado = true;
+                    }
                 }
 
                 // Si el bungalo está reservado, mostramos un mensaje de error

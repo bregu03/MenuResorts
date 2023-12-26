@@ -66,7 +66,7 @@ public class MenuFacturacion {
         } else if (!ResortActual.Reservas.isEmpty()){
             // Solicitamos la id de la reserva
             System.out.println("");
-            System.out.print("Ingrese la id de la reserva a la que desea añadir la actividad: ");
+            System.out.print("Ingrese la id de la reserva a la que generar una factura: ");
             int idReserva = MyInput.readInt();
 
             // Comprobamos si la reserva existe
@@ -135,11 +135,25 @@ public class MenuFacturacion {
                             }
                         }
                         
-                        int coste = costeBungalo * reserva.Personas;
+                        // Obtenemos la cantidad de milisegundos que hay entre las dos fechas de reserva
+                        long diferenciaEnMilisegundos1 = reserva.FechaFin.getTime() - reserva.FechaInicio.getTime();
+
+                        // Calculamos el número noches reservadas
+                        int nochesReserva = (int) (diferenciaEnMilisegundos1 / (1000 * 60 * 60 * 24));
+                        int coste = costeBungalo * reserva.Personas * nochesReserva;
                         
                         if (!reserva.ActividadesReservadas.isEmpty()){
                             for (int i = 0; i < reserva.ActividadesReservadas.size(); i++) {
-                                coste += reserva.ActividadesReservadas.get(i).Precio * reserva.ActividadesReservadas.get(i).Personas;
+                                if (reserva.ActividadesReservadas.get(i).Descripcion.equals("restaurante")){
+                                    coste += reserva.ActividadesReservadas.get(i).Precio;
+                                } else if (!reserva.ActividadesReservadas.get(i).Descripcion.equals("restaurante")){
+                                    // Obtenemos la cantidad de milisegundos que hay entre las dos fechas de la actividad
+                                    long diferenciaEnMilisegundos2 = reserva.ActividadesReservadas.get(i).FechaFin.getTime() - reserva.ActividadesReservadas.get(i).FechaInicio.getTime();
+
+                                    // Calculamos el número de dias en los que se realiza la actividad
+                                    int diasActividad = (int) ((diferenciaEnMilisegundos2 / (1000 * 60 * 60 * 24)) + 1);
+                                    coste += reserva.ActividadesReservadas.get(i).Precio * reserva.ActividadesReservadas.get(i).Personas * diasActividad;
+                                }
                             }
                         }
                         
