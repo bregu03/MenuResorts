@@ -3,6 +3,7 @@ package com.mycompany.menuresorts;
 import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -106,6 +107,17 @@ public class MyInput {
      */
     public static float readFloat() {
 	return Float.parseFloat(readString());
+    }
+    
+    /**
+     * Añade el metodo getYear el cual no esta en el paquete date
+     * @param fecha Variable fecha
+     * @return retorna el año concreto de una fecha
+     */
+    public static int getYear(Date fecha) {
+        Calendar calendario = Calendar.getInstance();
+        calendario.setTime(fecha);
+        return calendario.get(Calendar.YEAR);
     }
 
     

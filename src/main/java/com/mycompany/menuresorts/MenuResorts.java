@@ -20,9 +20,14 @@ public class MenuResorts {
         Resort ResortCargado;
         ResortCargado = MyInput.deserialize("resort.dat");
         
-        if(ResortCargado != null){
-            ResortActual = ResortCargado;
-            System.out.println("Datos cargados satisfactoriamente");
+        if (ResortCargado != null){
+            if (MyInput.getYear(ResortActual.FechaCreacion) == MyInput.getYear(ResortCargado.FechaCreacion) + 1){
+                MyInput.serialize(ResortCargado, "Historicos/" + MyInput.getYear(ResortCargado.FechaCreacion) + ".dat");
+                System.out.println("Historico del año " + MyInput.getYear(ResortCargado.FechaCreacion) + " creado satisfactoriamente.");
+            } else {
+                ResortActual = ResortCargado;
+                System.out.println("Datos cargados satisfactoriamente.");
+            }
         }
 
         int opcion;
