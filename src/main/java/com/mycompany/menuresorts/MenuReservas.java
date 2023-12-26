@@ -515,7 +515,8 @@ public class MenuReservas {
                             fechaFin = fechaInicio;
                             boolean continuar = false;
                             do {
-                                if (fechaFin.before(ResortActual.Reservas.get(reservaAñadir).FechaFin) && fechaInicio.after(ResortActual.Reservas.get(reservaAñadir).FechaInicio)) {
+                                // Las fechas al guardarse con la hora 00, se puede añadir la actividad si es el mismo dia de finalización de la reserva
+                                if ((fechaFin.before(ResortActual.Reservas.get(reservaAñadir).FechaFin) || fechaFin.equals(ResortActual.Reservas.get(reservaAñadir).FechaFin)) && (fechaInicio.after(ResortActual.Reservas.get(reservaAñadir).FechaInicio))) {
                                     continuar = true;
                                 }else{
                                     System.out.println("Fecha no valida, introduzca una fecha valida");
@@ -536,7 +537,8 @@ public class MenuReservas {
                             
                             boolean continuar = false;
                             do {
-                                if (fechaFin.before(ResortActual.Reservas.get(reservaAñadir).FechaFin) && fechaInicio.after(ResortActual.Reservas.get(reservaAñadir).FechaInicio)) {
+                                // Las fechas al guardarse con la hora 00, se puede añadir la actividad si es el mismo dia de finalización de la reserva
+                                if ((fechaFin.before(ResortActual.Reservas.get(reservaAñadir).FechaFin) || fechaFin.equals(ResortActual.Reservas.get(reservaAñadir).FechaFin)) && (fechaInicio.after(ResortActual.Reservas.get(reservaAñadir).FechaInicio))) {
                                     continuar = true;
                                 }else{
                                     System.out.println("Fechas no validas, introduzca fechas validas");
