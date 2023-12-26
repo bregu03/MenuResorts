@@ -159,6 +159,8 @@ public class MenuClientes {
                 }
             } while (!siguiente2);
         }
+        // Guardado de datos por seguridad
+        MyInput.serialize(ResortActual, "resort.dat");
         return ResortActual;
     }
     
@@ -205,8 +207,8 @@ public class MenuClientes {
         
             // Si el cliente no existe, mostramos un mensaje de error
             if (!existeCliente) {
-              System.out.println("El cliente con DNI/NIF " + numeroFiscal + " no existe.");
-              System.out.println("Volviendo al menu...");
+                System.out.println("El cliente con DNI/NIF " + numeroFiscal + " no existe.");
+                System.out.println("Volviendo al menu...");
             } else if (existeCliente){
                 // Mostramos la informacion del cliente
                 System.out.println("");

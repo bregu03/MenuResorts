@@ -157,6 +157,8 @@ public class MenuFacturacion {
                 }
             }
         }
+        // Guardado de datos por seguridad
+        MyInput.serialize(ResortActual, "resort.dat");
         return ResortActual;
     }
     
@@ -165,7 +167,38 @@ public class MenuFacturacion {
      * @param ResortActual Almacen de datos del sistema
      */
     public void facturasCliente(Resort ResortActual){
+        if (ResortActual.Facturas.isEmpty()){
+            System.out.println("No hay ninguna factura almacenada en el sistema");
+        } else if (!ResortActual.Facturas.isEmpty()){
+            System.out.println("");
+            System.out.print("Ingrese el DNI/NIF del cliente: ");
+            String numeroFiscal = MyInput.readString();
+
+            // Comprobamos si la factura existe
+            boolean existeFactura = false;
+            for (int i = 0; i < ResortActual.Facturas.size(); i++) {
+                if (ResortActual.Facturas.get(i).Reserva.Cliente.NumeroFiscal.equals(numeroFiscal)) {
+                    existeFactura = true;
+                    break;
+                }
+            }
         
+            // Si la factura no existe, mostramos un mensaje de error
+            if (!existeFactura) {
+              System.out.println("El cliente con DNI/NIF " + numeroFiscal + " no tiene ninguna factura asociada.");
+              System.out.println("Volviendo al menu...");
+            } else if (existeFactura){
+                // Mostramos la informacion de las facturas
+                for (int i = 0; i < ResortActual.Facturas.size(); i++) {
+                    if (ResortActual.Facturas.get(i).Reserva.Cliente.NumeroFiscal.equals(numeroFiscal)) {
+                        System.out.println("");
+                        System.out.println("ID Factura: " + ResortActual.Facturas.get(i).ID);
+                        System.out.println("DNI/NIF: " + ResortActual.Facturas.get(i).Reserva.Cliente.NumeroFiscal);
+                        System.out.println("Fecha de expedición: " + ResortActual.Facturas.get(i).FechaFact);
+                    }
+                }
+            }
+        }
     }
     
     /**
@@ -173,6 +206,75 @@ public class MenuFacturacion {
      * @param ResortActual Almacen de datos del sistema
      */
     public void mostarFactura(Resort ResortActual){
+        if (ResortActual.Facturas.isEmpty()){
+            System.out.println("No hay ninguna factura almacenada en el sistema");
+        } else if (!ResortActual.Facturas.isEmpty()){
+            System.out.println("");
+            System.out.print("Ingrese el DNI/NIF del cliente: ");
+            String numeroFiscal = MyInput.readString();
+
+            // Comprobamos si existen facturas de este cliente
+            boolean existeFactura = false;
+            for (int i = 0; i < ResortActual.Facturas.size(); i++) {
+                if (ResortActual.Facturas.get(i).Reserva.Cliente.NumeroFiscal.equals(numeroFiscal)) {
+                    existeFactura = true;
+                    break;
+                }
+            }
         
+            // Si la factura no existe, mostramos un mensaje de error
+            if (!existeFactura) {
+                System.out.println("El cliente con DNI/NIF " + numeroFiscal + " no tiene ninguna factura asociada.");
+                System.out.println("Volviendo al menu...");
+            } else if (existeFactura){
+                System.out.println("");
+                System.out.print("Ingrese la id de la factura: ");
+                int id = MyInput.readInt();
+                
+                // Comprobamos si existe la factura de este cliente
+                boolean existeFacturaCliente = false;
+                int facturaCliente = 0;
+                for (int i = 0; i < ResortActual.Facturas.size(); i++) {
+                    if (ResortActual.Facturas.get(i).Reserva.Cliente.NumeroFiscal.equals(numeroFiscal) && ResortActual.Facturas.get(i).ID == id) {
+                        existeFacturaCliente = true;
+                        facturaCliente = i;
+                        break;
+                    }
+                }
+                if (!existeFacturaCliente) {
+                    System.out.println("El cliente con DNI/NIF " + numeroFiscal + " no tiene ninguna factura asociada con la id " + id + ".");
+                    System.out.println("Volviendo al menu...");
+                } else if (existeFacturaCliente){
+                    System.out.println("");
+                    System.out.println("FACTURA");
+                    System.out.println("    Nombre: " + ResortActual.Facturas.get(facturaCliente).Reserva.Cliente.Nombre);
+                    System.out.println("    Apellidos: " + ResortActual.Facturas.get(facturaCliente).Reserva.Cliente.Apellidos);
+                    System.out.println("    DNI/NIF: " + ResortActual.Facturas.get(facturaCliente).Reserva.Cliente.NumeroFiscal);
+                    System.out.println("    Telefono: " + ResortActual.Facturas.get(facturaCliente).Reserva.Cliente.Telefono);
+                    System.out.println("");
+                    System.out.println("    ID Factura: " + ResortActual.Facturas.get(facturaCliente).ID);
+                    System.out.println("    Fecha de facturación: " + ResortActual.Facturas.get(facturaCliente).FechaFact);
+                    System.out.println("");
+                    System.out.println("    ID Bungalo: " + ResortActual.Facturas.get(facturaCliente).Reserva.IDBungalo);
+                    System.out.println("");
+                    System.out.println("    ACTIVIDADES RESERVADAS");
+                    if (ResortActual.Facturas.get(facturaCliente).Reserva.ActividadesReservadas.isEmpty()){
+                        System.out.println("        No se reservaron actividades.");
+                    } else if (!ResortActual.Facturas.get(facturaCliente).Reserva.ActividadesReservadas.isEmpty()){
+                        for (int i = 0; i < ResortActual.Facturas.get(facturaCliente).Reserva.ActividadesReservadas.size(); i++) {
+                            System.out.println("");
+                            System.out.println("        ID Actividad: " + ResortActual.Facturas.get(facturaCliente).Reserva.ActividadesReservadas.get(i).IDActividad);
+                            System.out.println("        Número de personas: " + ResortActual.Facturas.get(facturaCliente).Reserva.ActividadesReservadas.get(i).Personas);
+                            System.out.println("        Fecha inicio: " + ResortActual.Facturas.get(facturaCliente).Reserva.ActividadesReservadas.get(i).FechaInicio);
+                            System.out.println("        Fecha fin: " + ResortActual.Facturas.get(facturaCliente).Reserva.ActividadesReservadas.get(i).FechaFin);
+                            System.out.println("        Descripción: " + ResortActual.Facturas.get(facturaCliente).Reserva.ActividadesReservadas.get(i).Descripcion);
+                            System.out.println("        Precio: " + ResortActual.Facturas.get(facturaCliente).Reserva.ActividadesReservadas.get(i).Precio);
+                        }
+                    }
+                    System.out.println("");
+                    System.out.println("    Coste total: " + ResortActual.Facturas.get(facturaCliente).Coste + "€");
+                }
+            }
+        }
     }
 }

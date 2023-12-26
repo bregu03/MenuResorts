@@ -361,6 +361,8 @@ public class MenuReservas {
             System.out.println("No hay bungalos desponibles que cumplan estas condiciones");
             System.out.println("Volviendo al menu...");
         }
+        // Guardado de datos por seguridad
+        MyInput.serialize(ResortActual, "resort.dat");
         return ResortActual;
     }
     
@@ -448,6 +450,8 @@ public class MenuReservas {
                 }
             }
         }
+        // Guardado de datos por seguridad
+        MyInput.serialize(ResortActual, "resort.dat");
         return ResortActual;
     }
     
@@ -612,6 +616,8 @@ public class MenuReservas {
                 }
             }
         }
+        // Guardado de datos por seguridad
+        MyInput.serialize(ResortActual, "resort.dat");
         return ResortActual;
     }
     
@@ -713,6 +719,8 @@ public class MenuReservas {
                 }
             }
         }
+        // Guardado de datos por seguridad
+        MyInput.serialize(ResortActual, "resort.dat");
         return ResortActual;
     }
     

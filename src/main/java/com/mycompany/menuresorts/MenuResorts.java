@@ -21,10 +21,13 @@ public class MenuResorts {
         ResortCargado = MyInput.deserialize("resort.dat");
         
         if (ResortCargado != null){
+            // Si ResortCargado contiene datos
             if (MyInput.getYear(ResortActual.FechaCreacion) == MyInput.getYear(ResortCargado.FechaCreacion) + 1){
-                MyInput.serialize(ResortCargado, "Historicos/" + MyInput.getYear(ResortCargado.FechaCreacion) + ".dat");
+                // Si el año actual es igual al año de creacion de los datos mas 1, creamos el historico del año anterior
+                MyInput.serialize(ResortCargado, "Históricos/" + MyInput.getYear(ResortCargado.FechaCreacion) + ".dat");
                 System.out.println("Historico del año " + MyInput.getYear(ResortCargado.FechaCreacion) + " creado satisfactoriamente.");
             } else {
+                // Si no, copiamos los datos de ResortCargado a ResortActual
                 ResortActual = ResortCargado;
                 System.out.println("Datos cargados satisfactoriamente.");
             }

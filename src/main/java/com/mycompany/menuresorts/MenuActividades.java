@@ -125,6 +125,8 @@ public class MenuActividades {
                 }
             }
         } while (!siguiente);
+        // Guardado de datos por seguridad
+        MyInput.serialize(ResortActual, "resort.dat");
         return ResortActual;
     }
     

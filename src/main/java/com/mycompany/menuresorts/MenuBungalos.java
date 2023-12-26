@@ -160,6 +160,8 @@ public class MenuBungalos {
                 }
             }
         } while (!siguiente2);
+        // Guardado de datos por seguridad
+        MyInput.serialize(ResortActual, "resort.dat");
         return ResortActual;
     }
     
@@ -241,6 +243,8 @@ public class MenuBungalos {
                 }
             }
         }
+        // Guardado de datos por seguridad
+        MyInput.serialize(ResortActual, "resort.dat");
         return ResortActual;
     }
     
