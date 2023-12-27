@@ -13,7 +13,7 @@ public class MenuReservas {
      * Metodo encargado del menu
      * @param ResortActual  Almacen de datos del sistema
      * @return ResortActual
-     * @throws ParseException
+     * @throws ParseException Excepción encargada de gestionar el error si se introduce un formato no valido
      */
     public Resort menu_reservas(Resort ResortActual) throws ParseException {
         int opcion;
@@ -70,7 +70,7 @@ public class MenuReservas {
      * Metodo encargado de añadir una reserva al sistema
      * @param ResortActual Almacen de datos del sistema
      * @return ResortActual
-     * @throws ParseException
+     * @throws ParseException Excepción encargada de gestionar el error si se introduce un formato no valido
      */
     public Resort crearReserva(Resort ResortActual) throws ParseException{
         System.out.println("");
@@ -470,7 +470,7 @@ public class MenuReservas {
      * Metodo encargado de añadir una actividad a la reserva
      * @param ResortActual Almacen de datos del sistema
      * @return ResortActual
-     * @throws ParseException
+     * @throws ParseException Excepción encargada de gestionar el error si se introduce un formato no valido
      */
     public Resort agregarActividad(Resort ResortActual) throws ParseException{
         Date fechaInicio, fechaFin;

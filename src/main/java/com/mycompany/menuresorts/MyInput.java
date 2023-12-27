@@ -91,7 +91,7 @@ public class MyInput {
     /**
      * Método que permite leer una fecha por teclado
      * @return retorna una fecha.
-     * @throws java.text.ParseException
+     * @throws java.text.ParseException Excepción encargada de gestionar el error si se introduce un formato no valido
      */
     public static Date readDate() throws ParseException {
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");

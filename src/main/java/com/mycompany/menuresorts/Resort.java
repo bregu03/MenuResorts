@@ -9,12 +9,36 @@ import java.util.Date;
  * @author Alejandro
  */
 public class Resort implements Serializable {
+    
+    /**
+     * Variable almacen de los datos de los bungalos
+     */
     ArrayList<Bungalo> Bungalos;
+    
+    /**
+     * Variable almacen de los datos de las actividades
+     */
     ArrayList<Actividad> Actividades;
+    
+    /**
+     * Variable almacen de los datos de las reservas
+     */
     ArrayList<Reserva> Reservas;
+    
+    /**
+     * Variable almacen de los datos de los clientes
+     */
     ArrayList<Cliente> Clientes;
+    
+    /**
+     * Variable almacen de los datos de las facturas
+     */
     ArrayList<Factura> Facturas;
-    Date FechaCreacion;
+    
+    /**
+     * Variable almacen de la fecha de creación de la estructura
+     */
+    public Date FechaCreacion;
 
     /**
      * Metodo encargado de crear un almacen de datos nuevo

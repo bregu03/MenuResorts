@@ -11,7 +11,7 @@ public class MenuResorts {
     /**
      * Metodo encargado del menu principal, carga y guardado de datos
      * @param args Parametro encargado de almacenar todas las variables del programa durante su ejecucion
-     * @throws ParseException
+     * @throws ParseException Excepción encargada de gestionar el error si se introduce un formato no valido
      */
     public static void main(String[] args) throws ParseException {
         

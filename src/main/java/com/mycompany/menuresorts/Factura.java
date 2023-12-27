@@ -24,6 +24,9 @@ public class Factura implements Serializable {
      */
     public Date FechaFact;
     
+    /**
+     * Variable almacen de los datos de una reserva
+     */
     Reserva Reserva;
     
     /**

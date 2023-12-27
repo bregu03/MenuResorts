@@ -20,6 +20,9 @@ public class Reserva implements Serializable {
      */
     public int ID;
 
+    /**
+     * Variable almacen de los datos de un cliente
+     */
     Cliente Cliente;
 
     /**
@@ -41,6 +44,10 @@ public class Reserva implements Serializable {
      * Variable de los servicios especiales del bungalo
      */
     public String Servicios;
+    
+    /**
+     * Variable almacen de los datos de las actividades reservadas asociadas a esta reserva
+     */
     ArrayList<ActividadReservada> ActividadesReservadas;
     
     /**

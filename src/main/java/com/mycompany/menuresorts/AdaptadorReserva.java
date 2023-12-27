@@ -6,6 +6,9 @@ package com.mycompany.menuresorts;
  */
 public abstract class AdaptadorReserva {
 
+    /**
+     * Variable almacen de los datos de una reserva
+     */
     Reserva Reserva;
 
     /**
