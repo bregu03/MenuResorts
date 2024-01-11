@@ -168,22 +168,24 @@ public class MenuReservas {
                 disponibleId = false;
 
                 for (int i = 0; i < ResortActual.Bungalos.size(); i++) {
-                    if (ResortActual.Bungalos.get(i).Adaptado == adaptado && ResortActual.Bungalos.get(i).Capacidad >= personas) {
-                        if (!ResortActual.Reservas.isEmpty()){
-                            for (int n = 0; n < ResortActual.Reservas.size(); n++) {
-                                if (ResortActual.Bungalos.get(i).ID == ResortActual.Reservas.get(n).IDBungalo){
-                                    if (fechaFin.before(ResortActual.Reservas.get(n).FechaInicio) || fechaInicio.after(ResortActual.Reservas.get(n).FechaFin)) {
+                    if (ResortActual.Bungalos.get(i).ID == idBungalo){
+                        if (ResortActual.Bungalos.get(i).Adaptado == adaptado && ResortActual.Bungalos.get(i).Capacidad >= personas) {
+                            if (!ResortActual.Reservas.isEmpty()){
+                                for (int n = 0; n < ResortActual.Reservas.size(); n++) {
+                                    if (ResortActual.Bungalos.get(i).ID == ResortActual.Reservas.get(n).IDBungalo){
+                                        if (fechaFin.before(ResortActual.Reservas.get(n).FechaInicio) || fechaInicio.after(ResortActual.Reservas.get(n).FechaFin)) {
+                                            disponibleId = true;
+                                            break;
+                                        }
+                                    } else if (ResortActual.Bungalos.get(i).ID != ResortActual.Reservas.get(n).IDBungalo) {
                                         disponibleId = true;
                                         break;
                                     }
-                                } else if (ResortActual.Bungalos.get(i).ID != ResortActual.Reservas.get(n).IDBungalo) {
-                                    disponibleId = true;
-                                    break;
                                 }
+                            } else if (ResortActual.Reservas.isEmpty()){
+                                disponibleId = true;
+                                break;
                             }
-                        } else if (ResortActual.Reservas.isEmpty()){
-                            disponibleId = true;
-                            break;
                         }
                     }
                 }
@@ -510,8 +512,8 @@ public class MenuReservas {
                     // Comprobamos si la actividad existe
                     boolean existeActividad = false;
                     int actividadAñadir = 0;
-                    for (int i = 0; i < ResortActual.Reservas.size(); i++) {
-                        if (ResortActual.Reservas.get(i).ID == idActividad) {
+                    for (int i = 0; i < ResortActual.Actividades.size(); i++) {
+                        if (ResortActual.Actividades.get(i).ID == idActividad) {
                             existeActividad = true;
                             actividadAñadir = i;
                             break;

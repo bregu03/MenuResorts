@@ -74,8 +74,8 @@ public class MenuClientes {
         boolean continuar = true;
         if (!ResortActual.Clientes.isEmpty()){
             // Bucle para comprobar si el cliente ya existe
-            boolean existeCliente;
-            do {
+            boolean existeCliente = false;
+            while (existeCliente) {
                 // Comprobamos si la id ya existe
                 existeCliente = false;
 
@@ -119,7 +119,7 @@ public class MenuClientes {
                         }
                     } while (!siguiente1);
                 }
-            }while (existeCliente);
+            }
         }
         
         if (continuar) {
