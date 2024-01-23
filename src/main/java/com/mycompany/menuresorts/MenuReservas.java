@@ -1,6 +1,5 @@
 package com.mycompany.menuresorts;
 
-import java.text.ParseException;
 import java.util.Date;
 
 /**
@@ -13,9 +12,8 @@ public class MenuReservas {
      * Metodo encargado del menu
      * @param ResortActual  Almacen de datos del sistema
      * @return ResortActual
-     * @throws ParseException Excepción encargada de gestionar el error si se introduce un formato no valido
      */
-    public Resort menu_reservas(Resort ResortActual) throws ParseException {
+    public Resort menu_reservas(Resort ResortActual) {
         int opcion;
         do{
             System.out.println("");
@@ -70,9 +68,8 @@ public class MenuReservas {
      * Metodo encargado de añadir una reserva al sistema
      * @param ResortActual Almacen de datos del sistema
      * @return ResortActual
-     * @throws ParseException Excepción encargada de gestionar el error si se introduce un formato no valido
      */
-    public Resort crearReserva(Resort ResortActual) throws ParseException{
+    public Resort crearReserva(Resort ResortActual){
         System.out.println("");
         // Solicitamos si el bungalo a de ser accesible para personas con discapacidad
         System.out.print("¿El bungalo tiene que ser adaptado? (S/N): ");
@@ -472,9 +469,8 @@ public class MenuReservas {
      * Metodo encargado de añadir una actividad a la reserva
      * @param ResortActual Almacen de datos del sistema
      * @return ResortActual
-     * @throws ParseException Excepción encargada de gestionar el error si se introduce un formato no valido
      */
-    public Resort agregarActividad(Resort ResortActual) throws ParseException{
+    public Resort agregarActividad(Resort ResortActual){
         Date fechaInicio, fechaFin;
         int personas;
         if (ResortActual.Reservas.isEmpty()){

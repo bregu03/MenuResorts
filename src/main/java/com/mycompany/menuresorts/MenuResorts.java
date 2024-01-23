@@ -1,7 +1,5 @@
 package com.mycompany.menuresorts;
 
-import java.text.ParseException;
-
 /**
  * Clase encargada del menu principal, almacenamiento y carga de los datos
  * @author avbre
@@ -11,9 +9,8 @@ public class MenuResorts {
     /**
      * Metodo encargado del menu principal, carga y guardado de datos
      * @param args Parametro encargado de almacenar todas las variables del programa durante su ejecucion
-     * @throws ParseException Excepción encargada de gestionar el error si se introduce un formato no valido
      */
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args){
         
         Resort ResortActual = new Resort();
         

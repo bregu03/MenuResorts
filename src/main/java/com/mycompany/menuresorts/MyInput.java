@@ -38,7 +38,12 @@ public class MyInput {
      * @return retorna un número entero de precisión simple
      */
     public static int readInt(){
-	return Integer.parseInt(readString());
+        try {
+            return Integer.parseInt(readString());
+        } catch (NumberFormatException ex) {
+            System.out.print("Formato no valido, introduzca un valor numerico: ");
+            return readInt();
+        }
     }
     
 
@@ -91,11 +96,15 @@ public class MyInput {
     /**
      * Método que permite leer una fecha por teclado
      * @return retorna una fecha.
-     * @throws java.text.ParseException Excepción encargada de gestionar el error si se introduce un formato no valido
      */
-    public static Date readDate() throws ParseException {
+    public static Date readDate() {
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
-	return formatoFecha.parse(readString());
+        try {
+            return formatoFecha.parse(readString());
+        } catch (ParseException ex) {
+            System.out.print("Formato no valido, introduzca una fecha en el formato 'dd/MM/yyyy': ");
+            return readDate();
+        }
     }
     
     
